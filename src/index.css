@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #f7f3ec;
+  --color-bone: #efe8dd;
+  --color-beige: #d9cfbe;
+  --color-stone-soft: #b8ac98;
+  --color-ink: #1a1a1a;
+  --color-ink-soft: #4a4641;
+  --color-gold: #b08a4a;
+  --color-gold-soft: #c9a772;
+
+  --font-serif: "Cormorant Garamond", "Times New Roman", serif;
+  --font-sans: "Inter", "Helvetica Neue", system-ui, sans-serif;
+
+  --tracking-eyebrow: 0.3em;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.6;
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+  }
+
+  ::selection {
+    background-color: var(--color-gold);
+    color: var(--color-cream);
+  }
+
+  :focus-visible {
+    outline: 1px solid var(--color-gold);
+    outline-offset: 4px;
+  }
+
+  img {
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+}
+
+@utility eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+
+@utility hairline {
+  background-color: var(--color-beige);
+  height: 1px;
+  width: 100%;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
