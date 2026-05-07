@@ -1,47 +1,71 @@
 import { Reveal } from "../components/Reveal";
+import { images } from "../assets/images";
 
 const steps = [
   {
     n: "01",
+    eyebrow: "clip",
     title: "Clip on",
     copy: "A single press; the spring closes around any strap up to 25mm.",
+    src: images.line[5].src,
   },
   {
     n: "02",
+    eyebrow: "shoulder",
     title: "Shoulder up",
     copy: "The shaped pad sits flush, gripping fabric without bulk.",
+    src: images.line[6].src,
   },
   {
     n: "03",
+    eyebrow: "carry",
     title: "Carry on",
     copy: "All day. No more slipping, no more thinking about it.",
+    src: images.line[2].src,
   },
 ];
 
 export function HowItWorks() {
   return (
-    <section id="how" className="border-t border-mist bg-fog py-28 md:py-40">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-12">
-        <Reveal className="mb-16 max-w-2xl md:mb-24">
-          <p className="eyebrow mb-4">how it works</p>
-          <h2 className="font-display text-4xl font-medium leading-[1.02] tracking-[-0.035em] text-ink md:text-6xl lg:text-7xl">
-            Three steps. <em>One good day.</em>
+    <section
+      id="how"
+      aria-labelledby="how-heading"
+      className="border-t border-mist bg-fog py-24 md:py-32"
+    >
+      <div className="mx-auto max-w-[1600px] px-6 md:px-10">
+        <Reveal className="mb-12 max-w-2xl md:mb-16">
+          <p className="eyebrow mb-3">how it works</p>
+          <h2
+            id="how-heading"
+            className="font-display text-4xl font-medium leading-[1.02] tracking-[-0.035em] text-ink md:text-5xl lg:text-6xl"
+          >
+            Three steps, <em>one good day.</em>
           </h2>
         </Reveal>
 
-        <div className="grid gap-12 md:grid-cols-3 md:gap-12">
-          {steps.map((s, i) => (
-            <Reveal key={s.n} delay={i * 0.1} className="relative">
-              <p className="font-display text-7xl font-semibold tracking-[-0.04em] text-cornflower md:text-8xl">
-                {s.n}
-              </p>
-              <div className="mt-6 hairline" />
-              <h3 className="mt-6 font-display text-2xl font-medium tracking-[-0.02em] text-ink md:text-3xl">
-                {s.title}
-              </h3>
-              <p className="mt-3 max-w-xs text-sm leading-relaxed text-ink-soft">
-                {s.copy}
-              </p>
+        <div className="grid gap-8 md:grid-cols-3 md:gap-6 lg:gap-8">
+          {steps.map((step, i) => (
+            <Reveal key={step.n} delay={i * 0.08} className="group">
+              <figure className="relative overflow-hidden rounded-md bg-mist/50">
+                <img
+                  src={step.src}
+                  alt={step.title}
+                  loading="lazy"
+                  className="aspect-[5/4] h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.03]"
+                />
+                <span className="absolute left-4 top-4 rounded-full bg-fog/95 px-3 py-1 font-display text-xs font-medium text-ink backdrop-blur-sm">
+                  {step.n}
+                </span>
+              </figure>
+              <div className="mt-5 flex flex-col gap-2">
+                <p className="eyebrow">{step.eyebrow}</p>
+                <h3 className="font-display text-2xl font-medium tracking-[-0.02em] text-ink">
+                  {step.title}
+                </h3>
+                <p className="max-w-sm text-sm leading-relaxed text-ink-soft">
+                  {step.copy}
+                </p>
+              </div>
             </Reveal>
           ))}
         </div>

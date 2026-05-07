@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
 import Lenis from "lenis";
 
+import { UtilityBar } from "./components/UtilityBar";
 import { Nav } from "./components/Nav";
 import { Footer } from "./components/Footer";
 import { StickyCart } from "./components/StickyCart";
 
 import { Hero } from "./sections/Hero";
-import { ProductFocus } from "./sections/ProductFocus";
-import { ProblemSolution } from "./sections/ProblemSolution";
-import { Features } from "./sections/Features";
-import { Lifestyle } from "./sections/Lifestyle";
+import { LineCarousel } from "./sections/LineCarousel";
+import { BrandStatement } from "./sections/BrandStatement";
+import { CategoryGrid } from "./sections/CategoryGrid";
+import { FeaturedSet } from "./sections/FeaturedSet";
 import { HowItWorks } from "./sections/HowItWorks";
 import { Testimonials } from "./sections/Testimonials";
 import { Purchase } from "./sections/Purchase";
 import { FinalCTA } from "./sections/FinalCTA";
+import { MissionColumns } from "./sections/MissionColumns";
 
 export type Variant = "gold" | "silver";
 
@@ -50,15 +52,16 @@ export default function App() {
   const handleAdd = () => setCartCount((c) => c + 1);
 
   return (
-    <div id="top" className="bg-cream text-ink">
+    <div id="top" className="bg-fog text-ink">
+      <UtilityBar />
       <Nav />
 
       <main>
         <Hero />
-        <ProductFocus />
-        <ProblemSolution />
-        <Features />
-        <Lifestyle />
+        <LineCarousel />
+        <BrandStatement />
+        <CategoryGrid />
+        <FeaturedSet />
         <HowItWorks />
         <Testimonials />
         <Purchase
@@ -69,6 +72,7 @@ export default function App() {
           cartCount={cartCount}
         />
         <FinalCTA />
+        <MissionColumns />
       </main>
 
       <Footer />

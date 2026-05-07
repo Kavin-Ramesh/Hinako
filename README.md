@@ -7,9 +7,11 @@ Built with **Vite + React + TypeScript + Tailwind CSS v4**, with
 **Framer Motion** for subtle reveals and **Lenis** for smooth scrolling.
 
 Aesthetic: heather grey, sand beige, soft cornflower blue, and
-charcoal — quiet, confident, trust-modern-luxury 2026. Inspired by
-Rhode by Hailey Bieber, with a cooler grey-blue palette that signals
-intentional minimalism over high-end metallic glamour.
+charcoal — quiet, confident, trust-modern-luxury 2026. Architecture
+follows Rhode Skin's product-forward storefront flow: utility bar,
+sticky three-column nav, full-bleed hero, horizontal-scroll line
+carousel, oversized brand statement, curated category grid, featured
+kit banner, and three-column mission columns before the footer.
 
 ## Quick start
 
@@ -37,21 +39,23 @@ hinako/
 │  ├─ index.css             Tailwind v4 + design tokens
 │  ├─ assets/images.ts      Single source of truth for all photo URLs
 │  ├─ components/
-│  │  ├─ Nav.tsx
+│  │  ├─ UtilityBar.tsx     Top shipping-notice strip
+│  │  ├─ Nav.tsx            Sticky 3-column nav with centered wordmark
 │  │  ├─ Footer.tsx
 │  │  ├─ Reveal.tsx         Framer-Motion fade-in-on-view wrapper
 │  │  ├─ ProductRender.tsx  Inline SVG of the clip (Slate / Sand)
 │  │  └─ StickyCart.tsx     Floating bottom-right button after the hero
 │  └─ sections/
-│     ├─ Hero.tsx
-│     ├─ ProductFocus.tsx
-│     ├─ ProblemSolution.tsx
-│     ├─ Features.tsx
-│     ├─ Lifestyle.tsx
-│     ├─ HowItWorks.tsx
-│     ├─ Testimonials.tsx
-│     ├─ Purchase.tsx
-│     └─ FinalCTA.tsx
+│     ├─ Hero.tsx           Full-bleed image with bottom-right corner copy
+│     ├─ LineCarousel.tsx   Horizontal-scroll product cards (8 use cases)
+│     ├─ BrandStatement.tsx Oversized italic "one good thing" block
+│     ├─ CategoryGrid.tsx   4-up curated grid (morning/off-duty/dinner/weekend)
+│     ├─ FeaturedSet.tsx    50/50 split kit banner with outlined pill CTA
+│     ├─ HowItWorks.tsx     3 horizontal cards with imagery
+│     ├─ Testimonials.tsx   Static 3-up press strip
+│     ├─ Purchase.tsx       Variant selector + Apple-style buy block
+│     ├─ FinalCTA.tsx       Full-bleed image banner with corner copy
+│     └─ MissionColumns.tsx 3-column mission/craftsmanship/sustainability
 └─ index.html
 ```
 
@@ -75,7 +79,9 @@ block.
 
 Helper utilities: `eyebrow` (small lowercase italic label),
 `hairline` (1px mist rule), `btn-primary`, `btn-primary-cornflower`,
-`btn-outline`.
+`btn-outline`, `tracked-cta` (uppercase tracked mini-CTA),
+`scroll-row` + `scroll-snap` (horizontal scroll-snap rows for the
+line carousel).
 
 ## Typography pattern
 

@@ -128,6 +128,35 @@
   transition: background-color 250ms ease, color 250ms ease;
 }
 
+@utility tracked-cta {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  transition: color 200ms ease;
+}
+
+@utility scroll-row {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 1.5rem;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+@utility scroll-snap {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+}
+
+.scroll-row::-webkit-scrollbar {
+  display: none;
+}
+
 html.lenis,
 html.lenis body {
   height: auto;

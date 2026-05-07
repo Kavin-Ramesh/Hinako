@@ -74,11 +74,13 @@ export function Purchase({
             </p>
 
             <div className="mt-10">
-              <p className="eyebrow mb-3">finish</p>
-              <div className="inline-flex items-center gap-2">
+              <p className="text-[0.65rem] font-medium uppercase tracking-[0.22em] text-ink-soft">
+                Finish
+              </p>
+              <div className="mt-3 inline-flex items-center gap-2">
                 <button
                   onClick={() => onVariantChange("gold")}
-                  className={`rounded-md border px-5 py-2.5 text-sm transition-all duration-300 ${
+                  className={`rounded-full border px-5 py-2.5 text-[0.7rem] font-medium uppercase tracking-[0.18em] transition-all duration-300 ${
                     variant === "gold"
                       ? "border-ink bg-ink text-fog"
                       : "border-mist text-ink-soft hover:border-ink hover:text-ink"
@@ -88,7 +90,7 @@ export function Purchase({
                 </button>
                 <button
                   onClick={() => onVariantChange("silver")}
-                  className={`rounded-md border px-5 py-2.5 text-sm transition-all duration-300 ${
+                  className={`rounded-full border px-5 py-2.5 text-[0.7rem] font-medium uppercase tracking-[0.18em] transition-all duration-300 ${
                     variant === "silver"
                       ? "border-ink bg-ink text-fog"
                       : "border-mist text-ink-soft hover:border-ink hover:text-ink"
@@ -99,7 +101,7 @@ export function Purchase({
               </div>
             </div>
 
-            <div className="mt-8 flex items-baseline gap-3">
+            <div className="mt-10 flex items-baseline gap-3">
               <p className="font-display text-4xl font-medium tracking-[-0.03em] text-ink">${price}</p>
               <p className="text-sm text-ink-soft">USD &middot; tax included</p>
             </div>
@@ -107,7 +109,7 @@ export function Purchase({
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <button
                 onClick={onAdd}
-                className="group inline-flex items-center gap-2 rounded-md bg-cornflower px-7 py-3.5 text-sm font-medium text-fog transition-colors duration-300 hover:bg-cornflower-deep"
+                className="group inline-flex items-center gap-3 rounded-full bg-ink px-7 py-3 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-fog transition-colors duration-300 hover:bg-cornflower-deep"
               >
                 Buy clip <span className="text-fog/70">— ${price}</span>
                 <span className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
