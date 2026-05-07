@@ -5,94 +5,69 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 export function Hero() {
   return (
-    <section className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-cream">
+    <section
+      id="top"
+      className="relative h-[calc(100svh-3.5rem)] min-h-[560px] w-full overflow-hidden bg-fog md:h-[calc(100svh-4rem)]"
+    >
       <motion.div
-        initial={{ scale: 1.08, opacity: 0 }}
+        initial={{ scale: 1.04, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 1.8, ease }}
+        transition={{ duration: 1.6, ease }}
         className="absolute inset-0"
       >
         <img
           src={images.hero}
-          alt="Model wearing a structured leather bag held in place by the Hinako clip"
+          alt="A model in a heather-grey coat with a sand-beige bag held by the Hinako clip"
           className="h-full w-full object-cover object-[60%_center]"
           fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-cream/90 via-cream/40 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-cream/40 via-transparent to-cream/10" />
+        {/* Soft darkening only at the bottom-right corner for legibility */}
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 55% at 90% 95%, rgba(57,57,64,0.55) 0%, rgba(57,57,64,0.2) 40%, rgba(57,57,64,0) 75%)",
+          }}
+          aria-hidden
+        />
       </motion.div>
 
-      <div className="relative z-10 mx-auto flex h-full max-w-[1400px] flex-col justify-end px-6 pb-20 md:px-12 md:pb-28">
-        <div className="max-w-2xl">
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease, delay: 0.6 }}
-            className="eyebrow mb-6 text-ink"
-          >
-            Hinako &mdash; Est. 2026
-          </motion.p>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.1, ease, delay: 0.8 }}
-            className="font-serif text-[3.25rem] leading-[1.02] tracking-[-0.015em] text-ink sm:text-7xl md:text-[6.5rem] lg:text-[7.5rem]"
-          >
-            A bag that <em className="italic font-light">stays.</em>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease, delay: 1.0 }}
-            className="mt-8 max-w-md text-base leading-relaxed text-ink-soft md:text-lg"
-          >
-            Designed to move with you &mdash; without slipping.
-          </motion.p>
-
+      {/* Bottom-right overlay copy */}
+      <div className="absolute inset-x-0 bottom-0 z-10">
+        <div className="mx-auto flex max-w-[1600px] items-end justify-end px-6 pb-10 md:px-10 md:pb-14">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease, delay: 1.15 }}
-            className="mt-10 flex flex-wrap items-center gap-6"
+            transition={{ duration: 1, ease, delay: 0.7 }}
+            className="text-right text-fog"
           >
-            <a
-              href="#shop"
-              className="group inline-flex items-center gap-3 rounded-full bg-ink px-8 py-4 text-[0.72rem] font-medium uppercase tracking-[0.26em] text-cream transition-colors duration-300 hover:bg-gold"
-            >
-              Shop Hinako
-              <span className="transition-transform duration-300 group-hover:translate-x-0.5">
-                &rarr;
-              </span>
-            </a>
-
-            <a
-              href="#story"
-              className="group inline-flex items-center gap-2 text-[0.72rem] font-medium uppercase tracking-[0.26em] text-ink"
-            >
-              <span className="relative">
-                The story
-                <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-100 bg-ink transition-transform duration-500 group-hover:scale-x-0" />
-                <span className="absolute -bottom-1 left-0 h-px w-full origin-right scale-x-0 bg-gold transition-transform duration-500 group-hover:scale-x-100" />
-              </span>
-            </a>
+            <p className="mb-3 text-[0.68rem] font-medium uppercase tracking-[0.22em] text-fog/85">
+              Est. 2026
+            </p>
+            <h1 className="font-display text-4xl font-medium leading-[1.0] tracking-[-0.035em] text-fog sm:text-5xl md:text-6xl">
+              A bag that <em>stays.</em>
+            </h1>
+            <div className="mt-6 flex justify-end">
+              <a
+                href="#shop"
+                className="group inline-flex items-center gap-2 rounded-full border border-fog/90 bg-transparent px-6 py-2.5 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-fog transition-colors duration-300 hover:bg-fog hover:text-ink"
+              >
+                Shop the clip
+              </a>
+            </div>
           </motion.div>
         </div>
       </div>
 
+      {/* Bottom-center page indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, ease, delay: 1.4 }}
-        className="absolute bottom-8 right-8 hidden flex-col items-end gap-3 md:flex"
+        transition={{ duration: 1, ease, delay: 1.1 }}
+        className="absolute inset-x-0 bottom-5 z-10 flex justify-center md:bottom-7"
+        aria-hidden
       >
-        <span className="eyebrow text-ink-soft">Scroll</span>
-        <motion.span
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-          className="block h-10 w-px bg-ink/40"
-        />
+        <span className="block h-px w-10 bg-fog/85" />
       </motion.div>
     </section>
   );

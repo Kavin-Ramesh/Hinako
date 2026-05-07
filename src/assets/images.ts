@@ -8,10 +8,10 @@
 export const images = {
   hero: "/images/hero.jpg",
   lifestyle: [
-    "/images/lifestyle-walking.jpg",
+    "/images/lifestyle-architectural.jpg",
     "/images/lifestyle-detail.jpg",
-    "/images/lifestyle-cafe.jpg",
-    "/images/lifestyle-gallery.jpg",
+    "/images/lifestyle-product.jpg",
+    "/images/lifestyle-stilllife.jpg",
   ],
   detail: "/images/lifestyle-detail.jpg",
 };

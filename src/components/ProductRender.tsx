@@ -8,8 +8,8 @@ type ProductRenderProps = {
 
 /**
  * Stylized SVG render of the Hinako bag clip.
- * Used in product/purchase sections so visuals stay cohesive without
- * needing real product photography.
+ * "gold"  → "Slate" (charcoal body with cool highlight)
+ * "silver" → "Sand" (warm sand-beige body)
  */
 export function ProductRender({
   variant = "gold",
@@ -21,18 +21,26 @@ export function ProductRender({
   const colors =
     variant === "gold"
       ? {
-          highlight: "#F0D8A8",
-          mid: "#C9A772",
-          base: "#B08A4A",
-          shadow: "#7A5C2C",
-          edge: "#5C4520",
+          highlight: "#7C8090",
+          mid: "#5A5E6B",
+          base: "#41444F",
+          shadow: "#2A2C33",
+          edge: "#1B1C20",
+          glowFrom: "rgba(91, 146, 217, 0.18)",
+          glowMid: "rgba(91, 146, 217, 0.05)",
+          inner: "#F4F5F7",
+          logoFill: "#1B1C20",
         }
       : {
-          highlight: "#F2EFE9",
-          mid: "#D4D0C7",
-          base: "#B8B3A8",
-          shadow: "#878276",
-          edge: "#5A564E",
+          highlight: "#EDE5D6",
+          mid: "#D9D0C1",
+          base: "#BFB5A2",
+          shadow: "#8E8674",
+          edge: "#5C5547",
+          glowFrom: "rgba(91, 146, 217, 0.12)",
+          glowMid: "rgba(91, 146, 217, 0.04)",
+          inner: "#F4F5F7",
+          logoFill: "#5C5547",
         };
 
   return (
@@ -41,13 +49,13 @@ export function ProductRender({
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       role="img"
-      aria-label={`Hinako clip in ${variant}`}
+      aria-label={`Hinako clip in ${variant === "gold" ? "Slate" : "Sand"}`}
     >
       <defs>
         <linearGradient id={`body-${id}`} x1="0" y1="0" x2="1" y2="0.4">
           <stop offset="0%" stopColor={colors.highlight} />
           <stop offset="35%" stopColor={colors.mid} />
-          <stop offset="60%" stopColor={colors.base} />
+          <stop offset="65%" stopColor={colors.base} />
           <stop offset="100%" stopColor={colors.shadow} />
         </linearGradient>
         <linearGradient id={`top-${id}`} x1="0" y1="0" x2="0" y2="1">
@@ -60,59 +68,44 @@ export function ProductRender({
           <stop offset="100%" stopColor={colors.shadow} />
         </linearGradient>
         <radialGradient id={`shadow-${id}`} cx="0.5" cy="0.5" r="0.5">
-          <stop offset="0%" stopColor={colors.edge} stopOpacity="0.35" />
+          <stop offset="0%" stopColor={colors.edge} stopOpacity="0.3" />
           <stop offset="100%" stopColor={colors.edge} stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id={`coolglow-${id}`} cx="0.5" cy="0.5" r="0.55">
+          <stop offset="0%" stopColor={colors.glowFrom} />
+          <stop offset="60%" stopColor={colors.glowMid} />
+          <stop offset="100%" stopColor="rgba(91,146,217,0)" />
         </radialGradient>
         <filter id={`soft-${id}`} x="-20%" y="-20%" width="140%" height="140%">
           <feGaussianBlur stdDeviation="1.2" />
         </filter>
       </defs>
 
+      {/* very soft cool halo */}
+      <ellipse cx="200" cy="220" rx="220" ry="170" fill={`url(#coolglow-${id})`} />
       <ellipse cx="200" cy="430" rx="140" ry="14" fill={`url(#shadow-${id})`} />
 
       <g transform="translate(80 90)">
-        <rect
-          x="0"
-          y="0"
-          width="240"
-          height="170"
-          rx="14"
-          fill={`url(#body-${id})`}
-        />
-        <rect
-          x="0"
-          y="0"
-          width="240"
-          height="34"
-          rx="14"
-          fill={`url(#top-${id})`}
-          opacity="0.85"
-        />
-        <rect
-          x="0"
-          y="34"
-          width="240"
-          height="2"
-          fill={colors.shadow}
-          opacity="0.35"
-        />
+        <rect x="0" y="0" width="240" height="170" rx="6" fill={`url(#body-${id})`} />
+        <rect x="0" y="0" width="240" height="34" rx="6" fill={`url(#top-${id})`} opacity="0.85" />
+        <rect x="0" y="34" width="240" height="2" fill={colors.shadow} opacity="0.35" />
 
-        <g transform="translate(20 60)" opacity="0.92">
-          {showLogo && (
+        {showLogo && (
+          <g transform="translate(20 60)" opacity="0.92">
             <text
               x="100"
               y="42"
               textAnchor="middle"
-              fontFamily="Cormorant Garamond, serif"
-              fontSize="28"
+              fontFamily="Geist, Inter, sans-serif"
+              fontSize="26"
               fontWeight="500"
-              letterSpacing="6"
-              fill={colors.shadow}
+              letterSpacing="1"
+              fill={colors.logoFill}
             >
-              HINAKO
+              Hinako
             </text>
-          )}
-        </g>
+          </g>
+        )}
 
         <g transform="translate(0 170)">
           {Array.from({ length: 16 }).map((_, i) => (
@@ -129,23 +122,8 @@ export function ProductRender({
         </g>
 
         <g transform="translate(95 200)">
-          <rect
-            x="0"
-            y="0"
-            width="50"
-            height="74"
-            rx="6"
-            fill={`url(#body-${id})`}
-          />
-          <rect
-            x="10"
-            y="14"
-            width="30"
-            height="46"
-            rx="4"
-            fill="#F7F3EC"
-            opacity="0.95"
-          />
+          <rect x="0" y="0" width="50" height="74" rx="4" fill={`url(#body-${id})`} />
+          <rect x="10" y="14" width="30" height="46" rx="3" fill={colors.inner} opacity="0.95" />
         </g>
 
         <rect
@@ -153,7 +131,7 @@ export function ProductRender({
           y="0"
           width="240"
           height="170"
-          rx="14"
+          rx="6"
           fill="none"
           stroke={colors.highlight}
           strokeOpacity="0.5"

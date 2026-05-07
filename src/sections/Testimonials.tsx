@@ -19,7 +19,7 @@ const quotes = [
     location: "Copenhagen",
   },
   {
-    quote: "It looks like a piece of jewelry. It works like an engineer.",
+    quote: "Looks like jewelry. Works like an engineer.",
     author: "Sara K.",
     location: "Milan",
   },
@@ -36,10 +36,10 @@ export function Testimonials() {
   const q = quotes[i];
 
   return (
-    <section className="bg-bone py-32 md:py-48">
+    <section className="border-t border-mist bg-fog py-32 md:py-48">
       <div className="mx-auto max-w-[1100px] px-6 text-center md:px-12">
         <Reveal>
-          <p className="eyebrow mb-10">Worn by</p>
+          <p className="eyebrow mb-12">worn by</p>
         </Reveal>
 
         <div className="relative min-h-[260px] md:min-h-[320px]">
@@ -53,12 +53,12 @@ export function Testimonials() {
               className="space-y-10"
             >
               <p
-                className="font-serif text-3xl italic font-light leading-[1.25] text-ink sm:text-4xl md:text-5xl lg:text-6xl"
+                className="font-italic text-3xl italic font-normal leading-[1.18] text-ink sm:text-4xl md:text-5xl lg:text-6xl"
                 dangerouslySetInnerHTML={{ __html: `&ldquo;${q.quote}&rdquo;` }}
               />
               <footer className="flex flex-col items-center gap-2">
-                <span className="h-px w-10 bg-gold" />
-                <p className="eyebrow text-ink-soft">
+                <span className="h-px w-10 bg-cornflower" />
+                <p className="eyebrow">
                   {q.author} &middot; {q.location}
                 </p>
               </footer>
@@ -66,14 +66,14 @@ export function Testimonials() {
           </AnimatePresence>
         </div>
 
-        <div className="mt-12 flex items-center justify-center gap-3">
+        <div className="mt-12 flex items-center justify-center gap-2">
           {quotes.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setI(idx)}
               aria-label={`Show testimonial ${idx + 1}`}
-              className={`h-px transition-all duration-500 ${
-                idx === i ? "w-10 bg-ink" : "w-5 bg-beige hover:bg-ink-soft"
+              className={`h-1.5 rounded-full transition-all duration-500 ${
+                idx === i ? "w-10 bg-cornflower" : "w-1.5 bg-mist hover:bg-ink-soft"
               }`}
             />
           ))}

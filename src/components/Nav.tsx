@@ -1,64 +1,74 @@
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { Search, User } from "lucide-react";
 
-const links = [
-  { label: "Product", href: "#product" },
-  { label: "Story", href: "#story" },
-  { label: "How It Works", href: "#how" },
+const leftLinks = [
   { label: "Shop", href: "#shop" },
+  { label: "Story", href: "#story" },
+  { label: "How it works", href: "#how" },
 ];
 
 export function Nav() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
     <motion.header
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 1.1, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
-      className={`fixed inset-x-0 top-0 z-40 transition-colors duration-500 ${
-        scrolled
-          ? "bg-cream/90 backdrop-blur-md border-b border-beige/60"
-          : "bg-transparent"
-      }`}
+      transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
+      className="sticky top-0 z-40 border-b border-mist bg-fog"
     >
-      <nav className="mx-auto flex max-w-[1400px] items-center justify-between px-6 py-5 md:px-12 md:py-6">
-        <a
-          href="#top"
-          className="font-serif text-xl tracking-[0.18em] text-ink"
-          aria-label="Hinako home"
-        >
-          HINAKO
-        </a>
-
-        <ul className="hidden items-center gap-10 md:flex">
-          {links.map((link) => (
+      <nav className="mx-auto grid h-14 max-w-[1600px] grid-cols-[1fr_auto_1fr] items-center px-5 md:h-16 md:px-10">
+        {/* Left links */}
+        <ul className="hidden items-center gap-7 md:flex">
+          {leftLinks.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
-                className="group relative text-[0.78rem] font-medium uppercase tracking-[0.22em] text-ink-soft transition-colors hover:text-ink"
+                className="text-[0.72rem] font-medium uppercase tracking-[0.16em] text-ink transition-colors hover:text-cornflower"
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 h-px w-0 bg-gold transition-all duration-300 group-hover:w-full" />
               </a>
             </li>
           ))}
         </ul>
+        <div className="md:hidden" aria-hidden />
 
+        {/* Center wordmark */}
         <a
-          href="#shop"
-          className="group flex items-center gap-2 text-[0.78rem] font-medium uppercase tracking-[0.22em] text-ink transition-colors hover:text-gold"
+          href="#top"
+          className="font-display text-2xl font-medium tracking-[-0.03em] text-ink md:text-[1.65rem]"
+          aria-label="Hinako home"
         >
-          <span className="hidden sm:inline">Cart</span>
-          <span className="font-serif text-base">(0)</span>
+          Hinako
         </a>
+
+        {/* Right utilities */}
+        <ul className="flex items-center justify-end gap-5 md:gap-7">
+          <li className="hidden md:block">
+            <a
+              href="#"
+              aria-label="Search"
+              className="text-ink transition-colors hover:text-cornflower"
+            >
+              <Search strokeWidth={1.4} className="h-4 w-4" />
+            </a>
+          </li>
+          <li className="hidden md:block">
+            <a
+              href="#"
+              aria-label="Account"
+              className="text-ink transition-colors hover:text-cornflower"
+            >
+              <User strokeWidth={1.4} className="h-4 w-4" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="#shop"
+              className="text-[0.72rem] font-medium uppercase tracking-[0.16em] text-ink transition-colors hover:text-cornflower"
+            >
+              Cart (0)
+            </a>
+          </li>
+        </ul>
       </nav>
     </motion.header>
   );

@@ -1,19 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --color-cream: #f7f3ec;
-  --color-bone: #efe8dd;
-  --color-beige: #d9cfbe;
-  --color-stone-soft: #b8ac98;
-  --color-ink: #1a1a1a;
-  --color-ink-soft: #4a4641;
-  --color-gold: #b08a4a;
-  --color-gold-soft: #c9a772;
+  --color-fog: #f4f5f7;
+  --color-mist: #e6e7ea;
+  --color-sand: #d9d0c1;
+  --color-powder: #acd1f2;
+  --color-periwinkle: #a0b8f2;
+  --color-cornflower: #5b92d9;
+  --color-cornflower-deep: #3f74bb;
+  --color-ink: #393940;
+  --color-ink-soft: #6f7480;
 
-  --font-serif: "Cormorant Garamond", "Times New Roman", serif;
-  --font-sans: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  --font-display: "Geist", "Inter", system-ui, sans-serif;
+  --font-sans: "Geist", "Inter", system-ui, sans-serif;
+  --font-italic: "Instrument Serif", "Newsreader", serif;
 
-  --tracking-eyebrow: 0.3em;
+  --tracking-eyebrow: 0.04em;
 }
 
 @layer base {
@@ -21,33 +23,40 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
-    background-color: var(--color-cream);
+    background-color: var(--color-fog);
     color: var(--color-ink);
   }
 
   body {
     font-family: var(--font-sans);
-    font-weight: 300;
-    line-height: 1.6;
-    background-color: var(--color-cream);
+    font-weight: 400;
+    line-height: 1.55;
+    background-color: var(--color-fog);
     color: var(--color-ink);
     overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5 {
-    font-family: var(--font-serif);
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+  }
+
+  h1 em, h2 em, h3 em {
+    font-family: var(--font-italic);
+    font-style: italic;
     font-weight: 400;
     letter-spacing: -0.01em;
-    line-height: 1.05;
   }
 
   ::selection {
-    background-color: var(--color-gold);
-    color: var(--color-cream);
+    background-color: var(--color-cornflower);
+    color: var(--color-fog);
   }
 
   :focus-visible {
-    outline: 1px solid var(--color-gold);
+    outline: 1px solid var(--color-cornflower);
     outline-offset: 4px;
   }
 
@@ -58,18 +67,65 @@
 }
 
 @utility eyebrow {
-  font-family: var(--font-sans);
-  font-size: 0.6875rem;
-  font-weight: 500;
+  font-family: var(--font-italic);
+  font-size: 0.95rem;
+  font-weight: 400;
+  font-style: italic;
   letter-spacing: var(--tracking-eyebrow);
-  text-transform: uppercase;
+  text-transform: lowercase;
   color: var(--color-ink-soft);
 }
 
 @utility hairline {
-  background-color: var(--color-beige);
+  background-color: var(--color-mist);
   height: 1px;
   width: 100%;
+}
+
+@utility btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 6px;
+  background-color: var(--color-ink);
+  color: var(--color-fog);
+  padding: 0.75rem 1.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  transition: background-color 250ms ease, color 250ms ease, transform 250ms ease;
+}
+
+@utility btn-primary-cornflower {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 6px;
+  background-color: var(--color-cornflower);
+  color: var(--color-fog);
+  padding: 0.75rem 1.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  transition: background-color 250ms ease, color 250ms ease;
+}
+
+@utility btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-ink);
+  background-color: transparent;
+  color: var(--color-ink);
+  padding: 0.75rem 1.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  transition: background-color 250ms ease, color 250ms ease;
 }
 
 html.lenis,
