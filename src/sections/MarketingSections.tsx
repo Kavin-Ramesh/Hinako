@@ -1,11 +1,10 @@
 import { images } from "../assets/images";
 
-/** Shared luxury hover — tweak translate / shadow / duration here */
+/** Layout + rounding for marketing hover (glow animation lives in index.css) */
 const marketingHoverStrip =
-  "block w-full origin-center rounded-md outline-none transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-[0_18px_46px_-10px_rgba(237,229,216,0.92),0_12px_32px_-12px_rgba(47,61,82,0.1)]";
-
+  "marketing-hover-strip block w-full origin-center rounded-md outline-none";
 const marketingHoverCard =
-  "block w-full origin-center rounded-lg outline-none transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-safe:hover:-translate-y-1 motion-safe:hover:shadow-[0_20px_52px_-12px_rgba(237,229,216,0.94),0_14px_36px_-14px_rgba(47,61,82,0.11)]";
+  "marketing-hover-card block w-full max-w-full origin-center rounded-lg outline-none";
 
 /** Shared white frame — tweak `border-[3px]` / `md:border-4` for thickness */
 const stripImgClass =
