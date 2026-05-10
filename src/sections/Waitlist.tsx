@@ -19,7 +19,7 @@ export function Waitlist() {
     <section
       id="top"
       aria-labelledby="waitlist-heading"
-      className="relative flex min-h-[calc(100svh-7.5rem)] w-full flex-col justify-center overflow-hidden bg-fog px-6 py-16 md:min-h-[calc(100svh-8rem)] md:px-10 md:py-24"
+      className="relative flex min-h-[calc(100svh-8rem)] w-full flex-col justify-center overflow-hidden bg-fog px-6 py-16 md:min-h-[calc(100svh-8.75rem)] md:px-10 md:py-24"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-90"

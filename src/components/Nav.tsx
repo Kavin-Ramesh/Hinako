@@ -14,7 +14,7 @@ export function Nav() {
       transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
       className="sticky top-0 z-40 border-b border-mist bg-fog"
     >
-      <nav className="mx-auto grid h-14 max-w-[1600px] grid-cols-3 items-center px-5 md:h-16 md:px-10">
+      <nav className="mx-auto grid h-16 max-w-[1600px] grid-cols-3 items-center px-5 md:h-[4.75rem] md:px-10">
         <div className="flex min-w-0 items-center justify-start">
           <ul className="hidden items-center gap-7 md:flex">
             {leftLinks.map((link) => (
@@ -40,7 +40,7 @@ export function Nav() {
             alt=""
             width={819}
             height={1024}
-            className="h-10 w-auto max-w-[min(60vw,280px)] object-contain object-center sm:h-11 md:h-12 md:max-w-[320px]"
+            className="h-12 w-auto max-w-[min(70vw,320px)] object-contain object-center sm:h-[3.25rem] md:h-14 md:max-w-[min(78vw,400px)] lg:max-w-[460px]"
           />
         </a>
 
