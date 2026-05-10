@@ -1,16 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  /* Warm Rhode-style palette */
-  --color-fog: #f2eae0;            /* cream background */
-  --color-mist: #e8ddc9;            /* sand-beige hairline */
-  --color-sand: #d9c8b0;            /* warmer beige surface */
-  --color-rose: #e8b0cb;            /* baby pink — Rhode logo */
-  --color-rose-deep: #d88ab1;       /* hover / active */
-  --color-peach: #f2c9a8;           /* soft secondary */
-  --color-butter: #f5e6b0;          /* occasional accent surface */
-  --color-ink: #3b2a23;             /* warm dark brown */
-  --color-ink-soft: #7a655b;        /* warm taupe */
+  /* Cool blue palette — waitlist site */
+  --color-fog: #eef3f9;
+  --color-mist: #dbe4ef;
+  --color-sand: #c8d4e4;
+  --color-rose: #5b92d9;
+  --color-rose-deep: #3f74bb;
+  --color-peach: #a8c4ec;
+  --color-butter: #d4e3f7;
+  --color-ink: #1a2744;
+  --color-ink-soft: #5a6b85;
 
   --font-display: "Geist", "Inter", system-ui, sans-serif;
   --font-sans: "Geist", "Inter", system-ui, sans-serif;
@@ -54,7 +54,7 @@
 
   ::selection {
     background-color: var(--color-rose);
-    color: var(--color-ink);
+    color: var(--color-fog);
   }
 
   :focus-visible {
@@ -105,7 +105,7 @@
   gap: 0.5rem;
   border-radius: 6px;
   background-color: var(--color-rose);
-  color: var(--color-ink);
+  color: var(--color-fog);
   padding: 0.75rem 1.4rem;
   font-family: var(--font-sans);
   font-size: 0.9rem;
