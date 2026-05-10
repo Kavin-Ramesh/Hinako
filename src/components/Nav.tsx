@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { images } from "../assets/images";
 
 const leftLinks = [
   { label: "Waitlist", href: "#top" },
@@ -31,10 +32,16 @@ export function Nav() {
 
         <a
           href="#top"
-          className="wordmark justify-self-center text-center text-3xl text-rose-deep md:text-4xl"
+          className="justify-self-center leading-none"
           aria-label="Hinako home"
         >
-          hinako
+          <img
+            src={images.wordmark}
+            alt=""
+            width={120}
+            height={360}
+            className="h-10 w-auto object-contain md:h-12"
+          />
         </a>
 
         <div className="min-w-0" aria-hidden />

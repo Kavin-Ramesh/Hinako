@@ -6,7 +6,7 @@ Built with **Vite + React + TypeScript + Tailwind CSS v4**, with **Framer Motion
 
 **Current experience:** one full-viewport **waitlist** (email + join) and a single **philosophy** section below (`BrandStatement`). Everything that used to follow the shop flow (carousel, purchase, mission columns, etc.) has been removed.
 
-Aesthetic: **cool blue** — foggy blue-grey backgrounds, cornflower primary accent, navy ink. The Hinako wordmark stays in **Rubik Bubbles**, lowercase, in the accent blue.
+The Hinako wordmark is a **hand-drawn PNG** (`public/images/wordmark.png`), used in the nav and footer.
 
 ## Quick start
 
@@ -27,12 +27,13 @@ npm run preview  # preview the production build
 ```
 hinako/
 ├─ public/
-│  ├─ favicon.svg           Brand mark (blue "h" on fog)
-│  └─ images/               `product.png` — real prototype; optional extras in images.ts
+│  ├─ favicon.svg
+│  ├─ images/wordmark.png   Hand-drawn bubble title (nav + footer)
+│  └─ images/               `product.png` — real prototype; see `assets/images.ts`
 ├─ src/
 │  ├─ App.tsx               Waitlist + philosophy + Lenis
 │  ├─ index.css             Tailwind v4 + design tokens
-│  ├─ assets/images.ts      Image paths (unused until you add imagery back)
+│  ├─ assets/images.ts      Paths for wordmark, product, legacy assets
 │  ├─ components/
 │  │  ├─ UtilityBar.tsx     Top strip ("launching soon")
 │  │  ├─ Nav.tsx            Centered wordmark + waitlist / philosophy links
@@ -57,7 +58,7 @@ Tokens live in [src/index.css](src/index.css) under `@theme`.
 | `color-rose-deep` | `#3F74BB` | Hover / focus ring |
 | `color-ink`       | `#1A2744` | Primary text |
 | `color-ink-soft`  | `#5A6B85` | Secondary text |
-| `font-wordmark`   | Rubik Bubbles | Wordmark only |
+| `font-wordmark`   | _unused_      | Replaced by PNG wordmark |
 
 Helpers: `eyebrow`, `hairline`, `wordmark`, `btn-primary`, `btn-primary-rose`, `btn-outline`, `tracked-cta`, `scroll-row`, `scroll-snap`.
 
