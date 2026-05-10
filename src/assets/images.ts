@@ -6,7 +6,7 @@
  */
 
 export const images = {
-  /** Hand-drawn bubble wordmark PNG (vertical art) */
+  /** Hand-drawn “hinako” bubble wordmark (RGBA, transparent) */
   wordmark: "/images/wordmark.png",
   /** Real product photo (prototype in hand) */
   product: "/images/product.png",
