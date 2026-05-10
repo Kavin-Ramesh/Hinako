@@ -4,7 +4,7 @@ import { images } from "../assets/images";
 const stripImgClass =
   "h-auto w-full rounded-md border-[3px] border-white object-contain md:border-4";
 const cardImgClass =
-  "h-auto w-full rounded-lg border-[3px] border-white object-cover shadow-[0_20px_45px_-28px_rgba(47,61,82,0.12)] md:border-4";
+  "h-auto w-full rounded-lg border-[3px] border-white object-contain shadow-[0_20px_45px_-28px_rgba(47,61,82,0.12)] md:border-4";
 
 /** Full-width four-benefits graphic — beige band, minimal padding */
 export function BenefitsStrip() {
@@ -33,10 +33,10 @@ export function ProductMoments() {
   return (
     <section
       aria-label="Product gallery"
-      className="border-t border-sand/40 bg-cream py-12 md:py-16 lg:py-20"
+      className="border-t border-sand/40 bg-cream py-14 md:py-16 lg:py-16"
     >
-      <div className="mx-auto grid w-full max-w-[56rem] grid-cols-1 items-start gap-8 px-5 sm:px-6 md:grid-cols-2 md:gap-5 md:px-8 lg:max-w-[60rem] lg:gap-6 lg:px-10">
-        <figure className="m-0 w-full">
+      <div className="mx-auto grid w-full max-w-[56rem] grid-cols-1 gap-8 px-5 sm:px-6 md:grid-cols-2 md:items-center md:gap-6 md:px-8 lg:max-w-[60rem] lg:gap-7 lg:px-10">
+        <figure className="m-0 flex w-full justify-center">
           <img
             src={images.productPackaging}
             alt="Hinako handbag clip in open cream gift box with tissue paper"
@@ -47,7 +47,7 @@ export function ProductMoments() {
             className={cardImgClass}
           />
         </figure>
-        <figure className="m-0 w-full md:pt-1 lg:pt-2">
+        <figure className="m-0 flex w-full justify-center">
           <img
             src={images.productEditorial}
             alt="Hinako clip on a stone pedestal with soft floral styling"
