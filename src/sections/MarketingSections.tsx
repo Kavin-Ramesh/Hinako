@@ -75,7 +75,7 @@ export function VariantsLineup() {
           src={images.variantsLineup}
           alt="Hinako handbag clip in three finishes: clear, smoke, and amber"
           width={1024}
-          height={256}
+          height={238}
           decoding="async"
           loading="lazy"
           className={stripImgClass}

@@ -17,7 +17,7 @@ export const images = {
   /** Editorial still on stone with floral accents */
   productEditorial: "/images/product-editorial.png",
   /** Clear, smoke, and amber variants lineup */
-  variantsLineup: "/images/variants-lineup.jpg",
+  variantsLineup: "/images/variants-lineup.jpg?v=2",
   hero: "/images/hero.jpg",
 
   // Carousel — clip on a different bag type per card
