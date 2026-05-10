@@ -185,6 +185,43 @@ html.lenis body {
   overflow: hidden;
 }
 
+/* Marketing sections — hover lift + soft beige base + subtle pulsing white glow */
+@keyframes marketing-white-glow {
+  0%,
+  100% {
+    box-shadow:
+      var(--marketing-glow-base),
+      0 0 20px -8px rgba(255, 255, 255, 0.38),
+      0 0 44px -14px rgba(255, 255, 255, 0.14);
+  }
+  50% {
+    box-shadow:
+      var(--marketing-glow-base),
+      0 0 32px -6px rgba(255, 255, 255, 0.68),
+      0 0 56px -10px rgba(255, 255, 255, 0.22);
+  }
+}
+
+.marketing-hover-strip,
+.marketing-hover-card {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.marketing-hover-strip {
+  --marketing-glow-base: 0 18px 46px -10px rgba(237, 229, 216, 0.92), 0 12px 32px -12px rgba(47, 61, 82, 0.1);
+}
+
+.marketing-hover-card {
+  --marketing-glow-base: 0 20px 52px -12px rgba(237, 229, 216, 0.94), 0 14px 36px -14px rgba(47, 61, 82, 0.11);
+}
+
+.marketing-hover-strip:hover,
+.marketing-hover-card:hover {
+  transform: translateY(-4px);
+  animation: marketing-white-glow 2.6s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
