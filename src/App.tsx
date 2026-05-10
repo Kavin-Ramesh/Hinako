@@ -7,6 +7,7 @@ import { Footer } from "./components/Footer";
 
 import { Waitlist } from "./sections/Waitlist";
 import { BrandStatement } from "./sections/BrandStatement";
+import { GrainClipPair } from "./sections/GrainClipPair";
 
 export default function App() {
   useEffect(() => {
@@ -41,6 +42,7 @@ export default function App() {
       <main>
         <Waitlist />
         <BrandStatement />
+        <GrainClipPair />
       </main>
 
       <Footer />
