@@ -33,10 +33,10 @@ export function ProductMoments() {
   return (
     <section
       aria-label="Product gallery"
-      className="border-t border-sand/40 bg-cream py-14 md:py-20 lg:py-24"
+      className="border-t border-sand/40 bg-cream py-12 md:py-16 lg:py-20"
     >
-      <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 px-6 md:grid-cols-2 md:gap-10 md:px-10 lg:gap-12">
-        <figure className="m-0">
+      <div className="mx-auto grid w-full max-w-[56rem] grid-cols-1 items-start gap-8 px-5 sm:px-6 md:grid-cols-2 md:gap-5 md:px-8 lg:max-w-[60rem] lg:gap-6 lg:px-10">
+        <figure className="m-0 w-full">
           <img
             src={images.productPackaging}
             alt="Hinako handbag clip in open cream gift box with tissue paper"
@@ -47,7 +47,7 @@ export function ProductMoments() {
             className={cardImgClass}
           />
         </figure>
-        <figure className="m-0 md:pt-6 lg:pt-8">
+        <figure className="m-0 w-full md:pt-1 lg:pt-2">
           <img
             src={images.productEditorial}
             alt="Hinako clip on a stone pedestal with soft floral styling"
