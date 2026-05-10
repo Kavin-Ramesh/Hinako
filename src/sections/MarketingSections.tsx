@@ -1,5 +1,11 @@
 import { images } from "../assets/images";
 
+/** Shared white frame — tweak `border-[3px]` / `md:border-4` for thickness */
+const stripImgClass =
+  "h-auto w-full rounded-md border-[3px] border-white object-contain md:border-4";
+const cardImgClass =
+  "h-auto w-full rounded-lg border-[3px] border-white object-cover shadow-[0_20px_45px_-28px_rgba(47,61,82,0.12)] md:border-4";
+
 /** Full-width four-benefits graphic — beige band, minimal padding */
 export function BenefitsStrip() {
   return (
@@ -15,7 +21,7 @@ export function BenefitsStrip() {
           height={269}
           decoding="async"
           loading="lazy"
-          className="h-auto w-full object-contain"
+          className={stripImgClass}
         />
       </div>
     </section>
@@ -38,7 +44,7 @@ export function ProductMoments() {
             height={406}
             decoding="async"
             loading="lazy"
-            className="h-auto w-full rounded-lg object-cover shadow-[0_20px_45px_-28px_rgba(47,61,82,0.12)]"
+            className={cardImgClass}
           />
         </figure>
         <figure className="m-0 md:pt-6 lg:pt-8">
@@ -49,7 +55,7 @@ export function ProductMoments() {
             height={406}
             decoding="async"
             loading="lazy"
-            className="h-auto w-full rounded-lg object-cover shadow-[0_20px_45px_-28px_rgba(47,61,82,0.12)]"
+            className={cardImgClass}
           />
         </figure>
       </div>
@@ -72,7 +78,7 @@ export function VariantsLineup() {
           height={256}
           decoding="async"
           loading="lazy"
-          className="h-auto w-full object-contain"
+          className={stripImgClass}
         />
       </div>
     </section>
