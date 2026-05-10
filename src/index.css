@@ -185,6 +185,59 @@ html.lenis body {
   overflow: hidden;
 }
 
+/* --- Waitlist hero product: idle turntable + float (no-preference only) --- */
+@keyframes hero-product-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes hero-product-spin {
+  0%,
+  100% {
+    transform: rotateX(-3.5deg) rotateY(-5deg);
+  }
+  50% {
+    transform: rotateX(-3.5deg) rotateY(5deg);
+  }
+}
+
+.hero-product-oval-shadow {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: 0;
+  width: min(62%, 340px);
+  height: clamp(38px, 7.5vw, 54px);
+  transform: translateX(-50%) translateY(20%);
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    rgba(47, 61, 82, 0.2) 0%,
+    rgba(47, 61, 82, 0.08) 42%,
+    transparent 72%
+  );
+  filter: blur(22px);
+  opacity: 0.88;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero-product-float-layer {
+    animation: hero-product-float 5.5s ease-in-out infinite;
+    transform-style: preserve-3d;
+  }
+
+  .hero-product-spin-layer {
+    animation: hero-product-spin 16s ease-in-out infinite;
+    transform-style: preserve-3d;
+  }
+}
+
 /* Marketing sections — hover lift + soft beige base + subtle pulsing white glow */
 @keyframes marketing-white-glow {
   0%,

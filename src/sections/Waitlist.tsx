@@ -5,14 +5,15 @@ import { images } from "../assets/images";
 const ease = [0.22, 1, 0.36, 1] as const;
 
 /**
- * Product card 3D tilt — desktop / fine pointer only. Adjust here:
+ * Product hero: idle turntable + float live in `index.css` (`.hero-product-*` keyframes).
+ * Pointer tilt — desktop / fine pointer only. Tune spin amplitude/duration in CSS; tune tilt here:
  *
  * - maxRotateDeg — max tilt toward edges (degrees). ~4–8 feels luxury-subtle.
  * - hoverScale — 1 = none; ~1.02–1.04 for a slight lift.
- * - hoverLiftPx — negative floats the card up a few pixels.
+ * - hoverLiftPx — negative floats the card up a few pixels (adds on top of idle float).
  * - lerp — smoothing while hovering (0–1). Higher = snappier follow.
  * - transitionLerpOnLeave — smoothing after mouse leave (usually lower = slower settle).
- * - perspectivePx — on the wrapper; higher = flatter 3D (try 900–1200).
+ * - perspectivePx — on the stage wrapper; higher = flatter 3D (try 900–1200).
  * - easeShadow() below — edit RGBA / blur / spread for rest vs active shadows.
  */
 const TILT = {
@@ -40,6 +41,7 @@ type TiltVals = { rx: number; ry: number; s: number; lz: number; shadowT: number
 export function Waitlist() {
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
+  const [idleMotionEnabled, setIdleMotionEnabled] = useState(false);
   const [tiltEnabled, setTiltEnabled] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
   const currentRef = useRef<TiltVals>({ rx: 0, ry: 0, s: 1, lz: 0, shadowT: 0 });
@@ -48,9 +50,20 @@ export function Waitlist() {
   const rafRef = useRef<number>(0);
 
   useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    setTiltEnabled(!reduce && fine);
+    const reduceMq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const fineMq = window.matchMedia("(hover: hover) and (pointer: fine)");
+    const sync = () => {
+      const reduce = reduceMq.matches;
+      setIdleMotionEnabled(!reduce);
+      setTiltEnabled(!reduce && fineMq.matches);
+    };
+    sync();
+    reduceMq.addEventListener("change", sync);
+    fineMq.addEventListener("change", sync);
+    return () => {
+      reduceMq.removeEventListener("change", sync);
+      fineMq.removeEventListener("change", sync);
+    };
   }, []);
 
   const runFrame = useCallback(() => {
@@ -162,7 +175,7 @@ export function Waitlist() {
       onMouseEnter={tiltEnabled ? onMouseEnter : undefined}
       onMouseMove={tiltEnabled ? onMouseMove : undefined}
       onMouseLeave={tiltEnabled ? onMouseLeave : undefined}
-      className={`overflow-hidden rounded-2xl border border-mist bg-cream transform-gpu will-change-transform [transform-style:preserve-3d] ${
+      className={`overflow-hidden rounded-2xl border border-mist bg-cream transform-gpu will-change-transform [transform-style:preserve-3d] [backface-visibility:hidden] ${
         tiltEnabled ? "shadow-none" : "shadow-[0_24px_60px_-24px_rgba(47,61,82,0.14)]"
       }`}
     >
@@ -178,11 +191,32 @@ export function Waitlist() {
     </div>
   );
 
+  const perspectiveStage =
+    idleMotionEnabled || tiltEnabled ? `${TILT.perspectivePx}px` : undefined;
+
+  const heroProduct = (
+    <div className="hero-product-stage relative w-full overflow-visible pb-8 pt-0.5 md:pb-10">
+      <div className="hero-product-oval-shadow" aria-hidden />
+      <div
+        className="relative z-[1] px-0.5"
+        style={perspectiveStage ? { perspective: perspectiveStage } : undefined}
+      >
+        {idleMotionEnabled ? (
+          <div className="hero-product-float-layer will-change-transform">
+            <div className="hero-product-spin-layer will-change-transform">{productCard}</div>
+          </div>
+        ) : (
+          productCard
+        )}
+      </div>
+    </div>
+  );
+
   return (
     <section
       id="top"
       aria-labelledby="waitlist-heading"
-      className="relative flex min-h-[calc(100svh-8rem)] w-full flex-col justify-center overflow-hidden bg-fog px-6 py-16 md:min-h-[calc(100svh-8.75rem)] md:px-10 md:py-24"
+      className="relative flex min-h-[calc(100svh-8rem)] w-full flex-col justify-center overflow-x-hidden overflow-y-visible bg-fog px-6 py-16 md:min-h-[calc(100svh-8.75rem)] md:px-10 md:py-24"
     >
       <div
         className="pointer-events-none absolute inset-0 opacity-90"
@@ -199,18 +233,9 @@ export function Waitlist() {
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease, delay: 0.05 }}
-            className="mx-auto w-full max-w-2xl lg:mx-0 lg:max-w-none"
+            className="mx-auto w-full max-w-2xl overflow-visible lg:mx-0 lg:max-w-none"
           >
-            {tiltEnabled ? (
-              <div
-                className="px-0.5 pb-1 pt-0.5"
-                style={{ perspective: `${TILT.perspectivePx}px` }}
-              >
-                {productCard}
-              </div>
-            ) : (
-              productCard
-            )}
+            {heroProduct}
             <figcaption className="mt-4 text-center text-xs leading-relaxed text-ink-soft lg:text-left">
               The first Hinako clip — the handbag clip, refined for production.
             </figcaption>
