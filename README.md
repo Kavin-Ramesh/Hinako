@@ -51,14 +51,16 @@ Tokens live in [src/index.css](src/index.css) under `@theme`.
 
 | Token             | Value     | Use |
 | ----------------- | --------- | --- |
-| `color-fog`       | `#EEF3F9` | Page background |
-| `color-mist`      | `#DBE4EF` | Hairlines |
-| `color-sand`      | `#C8D4E4` | Secondary surfaces |
-| `color-rose`      | `#5B92D9` | Primary accent (named `rose` for historical Tailwind classnames) |
-| `color-rose-deep` | `#3F74BB` | Hover / focus ring |
-| `color-ink`       | `#1A2744` | Primary text |
-| `color-ink-soft`  | `#5A6B85` | Secondary text |
-| `font-wordmark`   | _unused_      | Replaced by PNG wordmark |
+| `color-fog`       | `#E4EEFB` | Page background (light blue) |
+| `color-mist`      | `#C8DAF2` | Hairlines |
+| `color-sand`      | `#E9DFD2` | Beige surfaces |
+| `color-cream`     | `#F5EEE4` | Cards / inputs |
+| `color-butter`    | `#EFE6D8` | Utility strip |
+| `color-rose`      | `#5C9AE0` | Primary accent (historical `rose` class names) |
+| `color-rose-deep` | `#3D7DCE` | Hover / focus ring |
+| `color-ink`       | `#2F3D52` | Primary text |
+| `color-ink-soft`  | `#5C6E80` | Secondary text |
+| `font-wordmark`   | _unused_  | Replaced by PNG wordmark |
 
 Helpers: `eyebrow`, `hairline`, `wordmark`, `btn-primary`, `btn-primary-rose`, `btn-outline`, `tracked-cta`, `scroll-row`, `scroll-snap`.
 

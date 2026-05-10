@@ -6,13 +6,17 @@ export function Footer() {
       <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-12 md:py-28">
         <div className="grid gap-12 md:grid-cols-2">
           <div>
-            <a href="#top" className="inline-block leading-none" aria-label="Hinako home">
+            <a
+              href="#top"
+              className="group/footermark inline-block rounded-lg p-1.5 leading-none outline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-rose-deep"
+              aria-label="Hinako home"
+            >
               <img
                 src={images.wordmark}
                 alt=""
                 width={819}
                 height={1024}
-                className="h-16 w-auto max-w-full object-contain object-left md:h-20 lg:h-24"
+                className="h-16 w-auto max-w-full object-contain object-left transition duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover/footermark:-translate-y-1 group-hover/footermark:scale-[1.05] group-hover/footermark:drop-shadow-[0_14px_32px_rgba(92,154,224,0.4)] md:h-20 lg:h-24"
               />
             </a>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-ink-soft">
