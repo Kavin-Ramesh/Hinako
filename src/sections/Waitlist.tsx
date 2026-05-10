@@ -67,10 +67,25 @@ export function Waitlist() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.9, ease, delay: 0.28 }}
-              className="font-display text-4xl font-medium leading-[1.02] tracking-[-0.04em] text-ink sm:text-5xl md:text-6xl"
+              className="mx-auto max-w-[min(92vw,440px)] lg:mx-0"
+            >
+              <img
+                src={images.wordmark}
+                alt="Hinako"
+                width={819}
+                height={1024}
+                className="mx-auto h-auto w-full max-h-[min(28vh,200px)] object-contain object-center lg:mx-0 lg:object-left sm:max-h-[min(32vh,240px)] md:max-h-[280px]"
+                fetchPriority="high"
+              />
+            </motion.h1>
+            <motion.h2
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease, delay: 0.36 }}
+              className="font-display mt-8 text-4xl font-medium leading-[1.02] tracking-[-0.04em] text-ink sm:text-5xl md:text-6xl"
             >
               A bag that <em>stays.</em>
-            </motion.h1>
+            </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
