@@ -38,9 +38,9 @@ export function Nav() {
           <img
             src={images.wordmark}
             alt=""
-            width={120}
-            height={360}
-            className="h-10 w-auto object-contain md:h-12"
+            width={819}
+            height={1024}
+            className="h-8 w-auto max-w-[min(52vw,220px)] object-contain object-center md:h-9 md:max-w-[260px]"
           />
         </a>
 

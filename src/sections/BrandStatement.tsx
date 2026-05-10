@@ -1,3 +1,4 @@
+import { images } from "../assets/images";
 import { Reveal } from "../components/Reveal";
 
 export function BrandStatement() {
@@ -9,6 +10,17 @@ export function BrandStatement() {
     >
       <div className="mx-auto max-w-[1200px] px-6 text-center md:px-12">
         <Reveal>
+          <div className="mb-10 flex justify-center">
+            <img
+              src={images.wordmark}
+              alt=""
+              width={819}
+              height={1024}
+              decoding="async"
+              loading="lazy"
+              className="h-12 w-auto max-w-[min(70vw,280px)] object-contain object-center md:h-14"
+            />
+          </div>
           <p className="eyebrow mb-10">our philosophy</p>
         </Reveal>
 

@@ -10,9 +10,9 @@ export function Footer() {
               <img
                 src={images.wordmark}
                 alt=""
-                width={160}
-                height={480}
-                className="h-24 w-auto object-contain md:h-32"
+                width={819}
+                height={1024}
+                className="h-16 w-auto max-w-full object-contain object-left md:h-20 lg:h-24"
               />
             </a>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-ink-soft">
