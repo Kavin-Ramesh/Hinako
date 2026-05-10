@@ -55,7 +55,7 @@ export function StickyCart({ variant, price, onAdd }: StickyCartProps) {
                   aria-hidden
                 />
                 <div className="leading-tight">
-                  <p className="text-sm font-medium text-ink">Hinako</p>
+                  <p className="wordmark text-xl text-rose-deep">hinako</p>
                   <p className="text-xs text-ink-soft">
                     {variantLabel} &middot; ${price}
                   </p>
@@ -64,7 +64,7 @@ export function StickyCart({ variant, price, onAdd }: StickyCartProps) {
 
               <button
                 onClick={onAdd}
-                className="group inline-flex items-center gap-2 rounded-md bg-cornflower px-5 py-2.5 text-xs font-medium text-fog transition-colors duration-300 hover:bg-cornflower-deep"
+                className="group inline-flex items-center gap-2 rounded-md bg-rose px-5 py-2.5 text-xs font-medium text-ink transition-colors duration-300 hover:bg-rose-deep"
               >
                 Buy clip
                 <span className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
@@ -82,7 +82,7 @@ export function StickyCart({ variant, price, onAdd }: StickyCartProps) {
           >
             <button
               onClick={onAdd}
-              className="group inline-flex items-center gap-3 rounded-md bg-ink py-3 pl-3 pr-5 text-sm font-medium text-fog shadow-[0_8px_28px_-12px_rgba(57,57,64,0.45)] transition-colors duration-300 hover:bg-cornflower-deep"
+              className="group inline-flex items-center gap-3 rounded-md bg-ink py-3 pl-3 pr-5 text-sm font-medium text-fog shadow-[0_8px_28px_-12px_rgba(59,42,35,0.45)] transition-colors duration-300 hover:bg-rose-deep"
             >
               <span
                 className={`h-7 w-7 rounded ${

@@ -43,7 +43,7 @@ export function Testimonials() {
                   &ldquo;{q.quote}&rdquo;
                 </blockquote>
                 <figcaption className="mt-8 flex items-center gap-3 text-xs">
-                  <span className="h-px w-6 bg-cornflower" />
+                  <span className="h-px w-6 bg-rose-deep" />
                   <span className="font-medium uppercase tracking-[0.18em] text-ink-soft">
                     {q.author} &middot; {q.location}
                   </span>

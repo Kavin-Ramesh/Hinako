@@ -18,7 +18,7 @@ export function FinalCTA() {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 60% 60% at 12% 90%, rgba(57,57,64,0.6) 0%, rgba(57,57,64,0.18) 45%, rgba(57,57,64,0) 75%)",
+              "radial-gradient(ellipse 60% 60% at 12% 90%, rgba(59,42,35,0.6) 0%, rgba(59,42,35,0.18) 45%, rgba(59,42,35,0) 75%)",
           }}
           aria-hidden
         />

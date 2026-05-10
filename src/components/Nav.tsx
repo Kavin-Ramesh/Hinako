@@ -22,7 +22,7 @@ export function Nav() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-[0.72rem] font-medium uppercase tracking-[0.16em] text-ink transition-colors hover:text-cornflower"
+                className="text-[0.72rem] font-medium uppercase tracking-[0.16em] text-ink transition-colors hover:text-rose-deep"
               >
                 {link.label}
               </a>
@@ -34,10 +34,10 @@ export function Nav() {
         {/* Center wordmark */}
         <a
           href="#top"
-          className="font-display text-2xl font-medium tracking-[-0.03em] text-ink md:text-[1.65rem]"
+          className="wordmark text-3xl text-rose-deep md:text-4xl"
           aria-label="Hinako home"
         >
-          Hinako
+          hinako
         </a>
 
         {/* Right utilities */}
@@ -46,7 +46,7 @@ export function Nav() {
             <a
               href="#"
               aria-label="Search"
-              className="text-ink transition-colors hover:text-cornflower"
+              className="text-ink transition-colors hover:text-rose-deep"
             >
               <Search strokeWidth={1.4} className="h-4 w-4" />
             </a>
@@ -55,7 +55,7 @@ export function Nav() {
             <a
               href="#"
               aria-label="Account"
-              className="text-ink transition-colors hover:text-cornflower"
+              className="text-ink transition-colors hover:text-rose-deep"
             >
               <User strokeWidth={1.4} className="h-4 w-4" />
             </a>
@@ -63,7 +63,7 @@ export function Nav() {
           <li>
             <a
               href="#shop"
-              className="text-[0.72rem] font-medium uppercase tracking-[0.16em] text-ink transition-colors hover:text-cornflower"
+              className="text-[0.72rem] font-medium uppercase tracking-[0.16em] text-ink transition-colors hover:text-rose-deep"
             >
               Cart (0)
             </a>

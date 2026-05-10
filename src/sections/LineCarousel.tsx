@@ -154,7 +154,7 @@ export function LineCarousel() {
                 </p>
                 <a
                   href="#shop"
-                  className="tracked-cta mt-2 inline-flex items-center gap-2 hover:text-cornflower"
+                  className="tracked-cta mt-2 inline-flex items-center gap-2 hover:text-rose-deep"
                 >
                   Buy clip — $48
                   <span className="transition-transform duration-300 group-hover:translate-x-0.5">

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="8" fill="#F4F5F7"/>
-  <text x="32" y="44" text-anchor="middle"
-        font-family="'Geist', 'Inter', sans-serif"
-        font-size="38" font-weight="500" fill="#393940" letter-spacing="-1.5">H</text>
+  <rect width="64" height="64" rx="8" fill="#F2EAE0"/>
+  <text x="32" y="50" text-anchor="middle"
+        font-family="'Rubik Bubbles', 'Bagel Fat One', cursive"
+        font-size="48" font-weight="400" fill="#E8B0CB">h</text>
 </svg>

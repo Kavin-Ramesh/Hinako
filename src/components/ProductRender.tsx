@@ -26,21 +26,21 @@ export function ProductRender({
           base: "#41444F",
           shadow: "#2A2C33",
           edge: "#1B1C20",
-          glowFrom: "rgba(91, 146, 217, 0.18)",
-          glowMid: "rgba(91, 146, 217, 0.05)",
-          inner: "#F4F5F7",
-          logoFill: "#1B1C20",
+          glowFrom: "rgba(232, 176, 203, 0.22)",
+          glowMid: "rgba(232, 176, 203, 0.06)",
+          inner: "#F2EAE0",
+          logoFill: "#F2EAE0",
         }
       : {
           highlight: "#EDE5D6",
-          mid: "#D9D0C1",
-          base: "#BFB5A2",
-          shadow: "#8E8674",
-          edge: "#5C5547",
-          glowFrom: "rgba(91, 146, 217, 0.12)",
-          glowMid: "rgba(91, 146, 217, 0.04)",
-          inner: "#F4F5F7",
-          logoFill: "#5C5547",
+          mid: "#D9C8B0",
+          base: "#BFAE92",
+          shadow: "#8E7A65",
+          edge: "#5C4D3F",
+          glowFrom: "rgba(232, 176, 203, 0.18)",
+          glowMid: "rgba(232, 176, 203, 0.05)",
+          inner: "#F2EAE0",
+          logoFill: "#5C4D3F",
         };
 
   return (
@@ -71,18 +71,18 @@ export function ProductRender({
           <stop offset="0%" stopColor={colors.edge} stopOpacity="0.3" />
           <stop offset="100%" stopColor={colors.edge} stopOpacity="0" />
         </radialGradient>
-        <radialGradient id={`coolglow-${id}`} cx="0.5" cy="0.5" r="0.55">
+        <radialGradient id={`roseglow-${id}`} cx="0.5" cy="0.5" r="0.55">
           <stop offset="0%" stopColor={colors.glowFrom} />
           <stop offset="60%" stopColor={colors.glowMid} />
-          <stop offset="100%" stopColor="rgba(91,146,217,0)" />
+          <stop offset="100%" stopColor="rgba(232,176,203,0)" />
         </radialGradient>
         <filter id={`soft-${id}`} x="-20%" y="-20%" width="140%" height="140%">
           <feGaussianBlur stdDeviation="1.2" />
         </filter>
       </defs>
 
-      {/* very soft cool halo */}
-      <ellipse cx="200" cy="220" rx="220" ry="170" fill={`url(#coolglow-${id})`} />
+      {/* very soft rose halo */}
+      <ellipse cx="200" cy="220" rx="220" ry="170" fill={`url(#roseglow-${id})`} />
       <ellipse cx="200" cy="430" rx="140" ry="14" fill={`url(#shadow-${id})`} />
 
       <g transform="translate(80 90)">
@@ -91,18 +91,18 @@ export function ProductRender({
         <rect x="0" y="34" width="240" height="2" fill={colors.shadow} opacity="0.35" />
 
         {showLogo && (
-          <g transform="translate(20 60)" opacity="0.92">
+          <g transform="translate(20 50)" opacity="0.95">
             <text
               x="100"
-              y="42"
+              y="48"
               textAnchor="middle"
-              fontFamily="Geist, Inter, sans-serif"
-              fontSize="26"
-              fontWeight="500"
-              letterSpacing="1"
+              fontFamily='"Rubik Bubbles", "Bagel Fat One", cursive'
+              fontSize="46"
+              fontWeight="400"
+              letterSpacing="0"
               fill={colors.logoFill}
             >
-              Hinako
+              hinako
             </text>
           </g>
         )}

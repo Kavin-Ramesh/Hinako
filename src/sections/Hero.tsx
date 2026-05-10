@@ -26,7 +26,7 @@ export function Hero() {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 60% 55% at 90% 95%, rgba(57,57,64,0.55) 0%, rgba(57,57,64,0.2) 40%, rgba(57,57,64,0) 75%)",
+              "radial-gradient(ellipse 60% 55% at 90% 95%, rgba(59,42,35,0.55) 0%, rgba(59,42,35,0.2) 40%, rgba(59,42,35,0) 75%)",
           }}
           aria-hidden
         />

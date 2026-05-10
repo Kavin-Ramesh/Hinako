@@ -67,7 +67,7 @@ export function CategoryGrid() {
                   <p className="max-w-xs text-sm leading-relaxed text-ink-soft">
                     {cat.copy}
                   </p>
-                  <span className="tracked-cta mt-2 inline-flex items-center gap-2 group-hover:text-cornflower">
+                  <span className="tracked-cta mt-2 inline-flex items-center gap-2 group-hover:text-rose-deep">
                     Shop the clip
                     <span className="transition-transform duration-300 group-hover:translate-x-0.5">
                       →

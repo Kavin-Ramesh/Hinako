@@ -1,19 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --color-fog: #f4f5f7;
-  --color-mist: #e6e7ea;
-  --color-sand: #d9d0c1;
-  --color-powder: #acd1f2;
-  --color-periwinkle: #a0b8f2;
-  --color-cornflower: #5b92d9;
-  --color-cornflower-deep: #3f74bb;
-  --color-ink: #393940;
-  --color-ink-soft: #6f7480;
+  /* Warm Rhode-style palette */
+  --color-fog: #f2eae0;            /* cream background */
+  --color-mist: #e8ddc9;            /* sand-beige hairline */
+  --color-sand: #d9c8b0;            /* warmer beige surface */
+  --color-rose: #e8b0cb;            /* baby pink — Rhode logo */
+  --color-rose-deep: #d88ab1;       /* hover / active */
+  --color-peach: #f2c9a8;           /* soft secondary */
+  --color-butter: #f5e6b0;          /* occasional accent surface */
+  --color-ink: #3b2a23;             /* warm dark brown */
+  --color-ink-soft: #7a655b;        /* warm taupe */
 
   --font-display: "Geist", "Inter", system-ui, sans-serif;
   --font-sans: "Geist", "Inter", system-ui, sans-serif;
   --font-italic: "Instrument Serif", "Newsreader", serif;
+  --font-wordmark: "Rubik Bubbles", "Bagel Fat One", system-ui, cursive;
 
   --tracking-eyebrow: 0.04em;
 }
@@ -51,12 +53,12 @@
   }
 
   ::selection {
-    background-color: var(--color-cornflower);
-    color: var(--color-fog);
+    background-color: var(--color-rose);
+    color: var(--color-ink);
   }
 
   :focus-visible {
-    outline: 1px solid var(--color-cornflower);
+    outline: 1px solid var(--color-rose-deep);
     outline-offset: 4px;
   }
 
@@ -97,19 +99,27 @@
   transition: background-color 250ms ease, color 250ms ease, transform 250ms ease;
 }
 
-@utility btn-primary-cornflower {
+@utility btn-primary-rose {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
   border-radius: 6px;
-  background-color: var(--color-cornflower);
-  color: var(--color-fog);
+  background-color: var(--color-rose);
+  color: var(--color-ink);
   padding: 0.75rem 1.4rem;
   font-family: var(--font-sans);
   font-size: 0.9rem;
   font-weight: 500;
   letter-spacing: -0.005em;
   transition: background-color 250ms ease, color 250ms ease;
+}
+
+@utility wordmark {
+  font-family: var(--font-wordmark);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: lowercase;
+  line-height: 1;
 }
 
 @utility btn-outline {

@@ -44,8 +44,8 @@ export function Purchase({
                 style={{
                   background:
                     variant === "gold"
-                      ? "radial-gradient(circle at 50% 45%, rgba(217,208,193,0.85) 0%, rgba(217,208,193,0.3) 35%, rgba(244,245,247,0) 70%)"
-                      : "radial-gradient(circle at 50% 45%, rgba(172,209,242,0.65) 0%, rgba(172,209,242,0.2) 40%, rgba(244,245,247,0) 70%)",
+                      ? "radial-gradient(circle at 50% 45%, rgba(217,200,176,0.85) 0%, rgba(217,200,176,0.3) 35%, rgba(242,234,224,0) 70%)"
+                      : "radial-gradient(circle at 50% 45%, rgba(232,176,203,0.55) 0%, rgba(232,176,203,0.18) 40%, rgba(242,234,224,0) 70%)",
                 }}
                 aria-hidden
               />
@@ -109,7 +109,7 @@ export function Purchase({
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <button
                 onClick={onAdd}
-                className="group inline-flex items-center gap-3 rounded-full bg-ink px-7 py-3 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-fog transition-colors duration-300 hover:bg-cornflower-deep"
+                className="group inline-flex items-center gap-3 rounded-full bg-rose px-7 py-3 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-ink transition-colors duration-300 hover:bg-rose-deep"
               >
                 Buy clip <span className="text-fog/70">— ${price}</span>
                 <span className="transition-transform duration-300 group-hover:translate-x-0.5">→</span>
@@ -118,7 +118,7 @@ export function Purchase({
                 <motion.span
                   initial={{ opacity: 0, x: -8 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="eyebrow text-cornflower"
+                  className="eyebrow text-rose-deep"
                 >
                   {cartCount} in cart
                 </motion.span>
@@ -128,7 +128,7 @@ export function Purchase({
             <ul className="mt-10 space-y-3 border-t border-mist pt-8 text-sm text-ink-soft">
               {includes.map((line) => (
                 <li key={line} className="flex items-start gap-3">
-                  <span className="mt-2 h-px w-3 bg-cornflower" aria-hidden />
+                  <span className="mt-2 h-px w-3 bg-rose-deep" aria-hidden />
                   <span>{line}</span>
                 </li>
               ))}

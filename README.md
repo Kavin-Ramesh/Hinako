@@ -6,12 +6,18 @@ that keeps a handbag strap on the shoulder.
 Built with **Vite + React + TypeScript + Tailwind CSS v4**, with
 **Framer Motion** for subtle reveals and **Lenis** for smooth scrolling.
 
-Aesthetic: heather grey, sand beige, soft cornflower blue, and
-charcoal — quiet, confident, trust-modern-luxury 2026. Architecture
-follows Rhode Skin's product-forward storefront flow: utility bar,
-sticky three-column nav, full-bleed hero, horizontal-scroll line
-carousel, oversized brand statement, curated category grid, featured
-kit banner, and three-column mission columns before the footer.
+Aesthetic: warm cream, baby pink, soft peach, butter yellow, and
+warm-brown ink — Rhode Skin's actual identity. The Hinako wordmark
+renders in **Rubik Bubbles** (the closest free match to Rhode's
+hand-drawn lettering), always lowercase, in baby pink. Section
+headlines stay clean (Geist + Instrument Serif italic accents) so
+the bubble lettering is reserved for the brand mark.
+
+Architecture follows Rhode Skin's product-forward storefront flow:
+utility bar, sticky three-column nav, full-bleed hero,
+horizontal-scroll line carousel, oversized brand statement, curated
+category grid, featured kit banner, and three-column mission columns
+before the footer.
 
 ## Quick start
 
@@ -64,24 +70,26 @@ hinako/
 All tokens live in [src/index.css](src/index.css) under the `@theme`
 block.
 
-| Token              | Value     | Use                          |
-| ------------------ | --------- | ---------------------------- |
-| `color-fog`        | `#F4F5F7` | Primary background           |
-| `color-mist`       | `#E6E7EA` | Hairline rules, dividers     |
-| `color-sand`       | `#D9D0C1` | Warm grounding surface       |
-| `color-powder`     | `#ACD1F2` | Soft tertiary surface        |
-| `color-periwinkle` | `#A0B8F2` | Soft secondary accent        |
-| `color-cornflower` | `#5B92D9` | Primary accent (CTAs)        |
-| `color-ink`        | `#393940` | Charcoal — replaces black    |
-| `color-ink-soft`   | `#6F7480` | Secondary text               |
-| `font-display`     | Geist     | Display + UI sans grotesque  |
-| `font-italic`      | Instrument Serif | Italic accent words   |
+| Token              | Value     | Use                              |
+| ------------------ | --------- | -------------------------------- |
+| `color-fog`        | `#F2EAE0` | Cream primary background         |
+| `color-mist`       | `#E8DDC9` | Sand-beige hairline rule         |
+| `color-sand`       | `#D9C8B0` | Warm grounding surface           |
+| `color-rose`       | `#E8B0CB` | Baby pink — primary accent       |
+| `color-rose-deep`  | `#D88AB1` | Hover / active                   |
+| `color-peach`      | `#F2C9A8` | Soft secondary surface           |
+| `color-butter`     | `#F5E6B0` | Occasional accent surface        |
+| `color-ink`        | `#3B2A23` | Warm dark brown — replaces black |
+| `color-ink-soft`   | `#7A655B` | Warm taupe secondary text        |
+| `font-display`     | Geist     | Display + UI sans grotesque      |
+| `font-italic`      | Instrument Serif | Italic accent words       |
+| `font-wordmark`    | Rubik Bubbles | Hinako wordmark only         |
 
 Helper utilities: `eyebrow` (small lowercase italic label),
-`hairline` (1px mist rule), `btn-primary`, `btn-primary-cornflower`,
-`btn-outline`, `tracked-cta` (uppercase tracked mini-CTA),
-`scroll-row` + `scroll-snap` (horizontal scroll-snap rows for the
-line carousel).
+`hairline` (1px mist rule), `wordmark` (lowercase Rubik Bubbles
+brand mark), `btn-primary`, `btn-primary-rose`, `btn-outline`,
+`tracked-cta` (uppercase tracked mini-CTA), `scroll-row` +
+`scroll-snap` (horizontal scroll-snap rows for the line carousel).
 
 ## Typography pattern
 
@@ -122,7 +130,7 @@ without studio photography.
 ## Accessibility
 
 - Semantic landmarks (`header`, `main`, `footer`, `section`).
-- Keyboard focus rings in cornflower blue (`:focus-visible`).
+- Keyboard focus rings in rose-deep pink (`:focus-visible`).
 - Honors `prefers-reduced-motion` (Lenis disabled, animations
   collapsed to instant).
 - Image `alt` text on every photo; decorative SVGs marked
