@@ -8,8 +8,8 @@
 export const images = {
   /** Hand-drawn “hinako” bubble wordmark (RGBA, transparent) */
   wordmark: "/images/wordmark.png",
-  /** Real product photo (prototype in hand) */
-  product: "/images/product.png",
+  /** First Hinako clip — vertical promo (wordmark + product) */
+  product: "/images/product.jpg",
   hero: "/images/hero.jpg",
 
   // Carousel — clip on a different bag type per card
