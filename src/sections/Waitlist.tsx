@@ -1,12 +1,152 @@
-import { useState } from "react";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { images } from "../assets/images";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
+/**
+ * Product card 3D tilt — desktop / fine pointer only. Adjust here:
+ *
+ * - maxRotateDeg — max tilt toward edges (degrees). ~4–8 feels luxury-subtle.
+ * - hoverScale — 1 = none; ~1.02–1.04 for a slight lift.
+ * - hoverLiftPx — negative floats the card up a few pixels.
+ * - lerp — smoothing while hovering (0–1). Higher = snappier follow.
+ * - transitionLerpOnLeave — smoothing after mouse leave (usually lower = slower settle).
+ * - perspectivePx — on the wrapper; higher = flatter 3D (try 900–1200).
+ * - easeShadow() below — edit RGBA / blur / spread for rest vs active shadows.
+ */
+const TILT = {
+  maxRotateDeg: 5.5,
+  hoverScale: 1.022,
+  hoverLiftPx: -6,
+  lerp: 0.14,
+  transitionLerpOnLeave: 0.09,
+  perspectivePx: 1000,
+} as const;
+
+/** shadowT: 0 = rest, 1 = full hover — blend for a soft premium shadow */
+function easeShadow(shadowT: number) {
+  const v = Math.max(0, Math.min(1, shadowT));
+  const blur = 60 + 14 * v;
+  const y = 24 + 12 * v;
+  const spread = -24 + 4 * v;
+  const alpha = 0.14 + 0.06 * v;
+  const accent = v > 0.04 ? `, 0 ${14 + 10 * v}px ${38 + 14 * v}px -12px rgba(92, 154, 224, ${0.08 + 0.08 * v})` : "";
+  return `0 ${y}px ${blur}px ${spread}px rgba(47, 61, 82, ${alpha})${accent}`;
+}
+
+type TiltVals = { rx: number; ry: number; s: number; lz: number; shadowT: number };
+
 export function Waitlist() {
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
+  const [tiltEnabled, setTiltEnabled] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+  const currentRef = useRef<TiltVals>({ rx: 0, ry: 0, s: 1, lz: 0, shadowT: 0 });
+  const targetRef = useRef<TiltVals>({ rx: 0, ry: 0, s: 1, lz: 0, shadowT: 0 });
+  const hoveringRef = useRef(false);
+  const rafRef = useRef<number>(0);
+
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    setTiltEnabled(!reduce && fine);
+  }, []);
+
+  const runFrame = useCallback(() => {
+    const el = cardRef.current;
+    if (!el || !tiltEnabled) return;
+
+    const c = currentRef.current;
+    const t = targetRef.current;
+    const a = hoveringRef.current ? TILT.lerp : TILT.transitionLerpOnLeave;
+
+    c.rx += (t.rx - c.rx) * a;
+    c.ry += (t.ry - c.ry) * a;
+    c.s += (t.s - c.s) * a;
+    c.lz += (t.lz - c.lz) * a;
+    c.shadowT += (t.shadowT - c.shadowT) * a;
+
+    el.style.transform = `rotateX(${c.rx}deg) rotateY(${c.ry}deg) translateY(${c.lz}px) scale(${c.s})`;
+    el.style.boxShadow = easeShadow(c.shadowT);
+
+    const eps = 0.003;
+    const settled =
+      Math.abs(t.rx - c.rx) < eps &&
+      Math.abs(t.ry - c.ry) < eps &&
+      Math.abs(t.s - c.s) < eps &&
+      Math.abs(t.lz - c.lz) < eps &&
+      Math.abs(t.shadowT - c.shadowT) < eps;
+
+    if (!settled) {
+      rafRef.current = requestAnimationFrame(runFrame);
+    } else {
+      rafRef.current = 0;
+    }
+  }, [tiltEnabled]);
+
+  const scheduleFrame = useCallback(() => {
+    if (!tiltEnabled) return;
+    if (!rafRef.current) rafRef.current = requestAnimationFrame(runFrame);
+  }, [tiltEnabled, runFrame]);
+
+  useEffect(() => {
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!tiltEnabled && rafRef.current) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = 0;
+    }
+  }, [tiltEnabled]);
+
+  useLayoutEffect(() => {
+    const el = cardRef.current;
+    if (!tiltEnabled || !el) return;
+    currentRef.current = { rx: 0, ry: 0, s: 1, lz: 0, shadowT: 0 };
+    targetRef.current = { rx: 0, ry: 0, s: 1, lz: 0, shadowT: 0 };
+    el.style.transform = "rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)";
+    el.style.boxShadow = easeShadow(0);
+  }, [tiltEnabled]);
+
+  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!tiltEnabled || !cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const nx = (e.clientX - rect.left) / rect.width - 0.5;
+    const ny = (e.clientY - rect.top) / rect.height - 0.5;
+    const cx = Math.max(-0.5, Math.min(0.5, nx));
+    const cy = Math.max(-0.5, Math.min(0.5, ny));
+
+    targetRef.current.ry = cx * 2 * TILT.maxRotateDeg;
+    targetRef.current.rx = -cy * 2 * TILT.maxRotateDeg;
+    targetRef.current.s = TILT.hoverScale;
+    targetRef.current.lz = TILT.hoverLiftPx;
+    targetRef.current.shadowT = 1;
+    scheduleFrame();
+  };
+
+  const onMouseEnter = () => {
+    if (!tiltEnabled) return;
+    hoveringRef.current = true;
+    targetRef.current.s = TILT.hoverScale;
+    targetRef.current.lz = TILT.hoverLiftPx;
+    targetRef.current.shadowT = 1;
+    scheduleFrame();
+  };
+
+  const onMouseLeave = () => {
+    if (!tiltEnabled) return;
+    hoveringRef.current = false;
+    targetRef.current.rx = 0;
+    targetRef.current.ry = 0;
+    targetRef.current.s = 1;
+    targetRef.current.lz = 0;
+    targetRef.current.shadowT = 0;
+    scheduleFrame();
+  };
 
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -14,6 +154,29 @@ export function Waitlist() {
     setDone(true);
     setEmail("");
   };
+
+  const productCard = (
+    <div
+      ref={tiltEnabled ? cardRef : undefined}
+      role={tiltEnabled ? "presentation" : undefined}
+      onMouseEnter={tiltEnabled ? onMouseEnter : undefined}
+      onMouseMove={tiltEnabled ? onMouseMove : undefined}
+      onMouseLeave={tiltEnabled ? onMouseLeave : undefined}
+      className={`overflow-hidden rounded-2xl border border-mist bg-cream transform-gpu will-change-transform [transform-style:preserve-3d] ${
+        tiltEnabled ? "shadow-none" : "shadow-[0_24px_60px_-24px_rgba(47,61,82,0.14)]"
+      }`}
+    >
+      <img
+        src={images.product}
+        alt="Hinako the handbag clip — secure your style. Translucent clip prototype on a warm beige background."
+        className="mx-auto h-auto w-full max-h-[min(42vh,380px)] object-contain object-center md:max-h-[min(46vh,420px)]"
+        fetchPriority="high"
+        width={1024}
+        height={570}
+        draggable={false}
+      />
+    </div>
+  );
 
   return (
     <section
@@ -38,16 +201,16 @@ export function Waitlist() {
             transition={{ duration: 1, ease, delay: 0.05 }}
             className="mx-auto w-full max-w-2xl lg:mx-0 lg:max-w-none"
           >
-            <div className="overflow-hidden rounded-2xl border border-mist bg-cream shadow-[0_24px_60px_-24px_rgba(47,61,82,0.14)]">
-              <img
-                src={images.product}
-                alt="Hinako the handbag clip — secure your style. Translucent clip prototype on a warm beige background."
-                className="mx-auto h-auto w-full max-h-[min(42vh,380px)] object-contain object-center md:max-h-[min(46vh,420px)]"
-                fetchPriority="high"
-                width={1024}
-                height={570}
-              />
-            </div>
+            {tiltEnabled ? (
+              <div
+                className="px-0.5 pb-1 pt-0.5"
+                style={{ perspective: `${TILT.perspectivePx}px` }}
+              >
+                {productCard}
+              </div>
+            ) : (
+              productCard
+            )}
             <figcaption className="mt-4 text-center text-xs leading-relaxed text-ink-soft lg:text-left">
               The first Hinako clip — the handbag clip, refined for production.
             </figcaption>
