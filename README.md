@@ -28,7 +28,7 @@ npm run preview  # preview the production build
 hinako/
 ├─ public/
 │  ├─ favicon.svg           Brand mark (blue "h" on fog)
-│  └─ images/               Optional assets (registry in assets/images.ts)
+│  └─ images/               `product.png` — real prototype; optional extras in images.ts
 ├─ src/
 │  ├─ App.tsx               Waitlist + philosophy + Lenis
 │  ├─ index.css             Tailwind v4 + design tokens
