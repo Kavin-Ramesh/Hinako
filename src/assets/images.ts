@@ -9,7 +9,7 @@ export const images = {
   /** Hand-drawn “hinako” bubble wordmark (RGBA, transparent) */
   wordmark: "/images/wordmark.png",
   /** First Hinako clip — landscape banner (wordmark + production-refined prototype photo). `?v=` busts cached JPEG after swaps. */
-  product: "/images/product.jpg?v=h1-20260510",
+  product: "/images/product.jpg?v=h1-20260511",
   /** Four-pillar value strip (SECURE, LIGHTWEIGHT, MINIMAL, MADE TO LAST) */
   benefitsStrip: "/images/benefits-strip.jpg",
   /** Clip in cream packaging with tissue */

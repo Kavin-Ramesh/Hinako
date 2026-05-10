@@ -171,8 +171,8 @@ export function Waitlist() {
         alt="Hinako the handbag clip — secure your style. Translucent clip prototype on a warm beige background."
         className="mx-auto h-auto w-full max-h-[min(42vh,380px)] object-contain object-center md:max-h-[min(46vh,420px)]"
         fetchPriority="high"
-        width={1024}
-        height={570}
+        width={933}
+        height={1024}
         draggable={false}
       />
     </div>
