@@ -10,6 +10,14 @@ export const images = {
   wordmark: "/images/wordmark.png",
   /** First Hinako clip — landscape banner (wordmark + production-refined prototype photo). `?v=` busts cached JPEG after swaps. */
   product: "/images/product.jpg?v=h1-20260510",
+  /** Four-pillar value strip (SECURE, LIGHTWEIGHT, MINIMAL, MADE TO LAST) */
+  benefitsStrip: "/images/benefits-strip.jpg",
+  /** Clip in cream packaging with tissue */
+  productPackaging: "/images/product-packaging.png",
+  /** Editorial still on stone with floral accents */
+  productEditorial: "/images/product-editorial.png",
+  /** Clear, smoke, and amber variants lineup */
+  variantsLineup: "/images/variants-lineup.jpg",
   hero: "/images/hero.jpg",
 
   // Carousel — clip on a different bag type per card

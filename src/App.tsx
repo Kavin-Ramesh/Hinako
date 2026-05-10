@@ -6,6 +6,11 @@ import { Nav } from "./components/Nav";
 import { Footer } from "./components/Footer";
 
 import { Waitlist } from "./sections/Waitlist";
+import {
+  BenefitsStrip,
+  ProductMoments,
+  VariantsLineup,
+} from "./sections/MarketingSections";
 import { BrandStatement } from "./sections/BrandStatement";
 
 export default function App() {
@@ -40,7 +45,10 @@ export default function App() {
 
       <main>
         <Waitlist />
+        <BenefitsStrip />
         <BrandStatement />
+        <ProductMoments />
+        <VariantsLineup />
       </main>
 
       <Footer />
