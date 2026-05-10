@@ -1,10 +1,20 @@
+import { images } from "../assets/images";
+
 export function Footer() {
   return (
     <footer className="border-t border-mist bg-fog">
       <div className="mx-auto max-w-[1400px] px-6 py-20 md:px-12 md:py-28">
         <div className="grid gap-12 md:grid-cols-2">
           <div>
-            <p className="wordmark text-5xl text-rose-deep md:text-6xl">hinako</p>
+            <a href="#top" className="inline-block leading-none" aria-label="Hinako home">
+              <img
+                src={images.wordmark}
+                alt=""
+                width={160}
+                height={480}
+                className="h-24 w-auto object-contain md:h-32"
+              />
+            </a>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-ink-soft">
               One good thing for your bag. Made really well. Designed in Kyoto, worn everywhere.
             </p>
