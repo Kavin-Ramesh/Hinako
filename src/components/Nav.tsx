@@ -40,7 +40,7 @@ export function Nav() {
             alt=""
             width={819}
             height={1024}
-            className="h-8 w-auto max-w-[min(52vw,220px)] object-contain object-center md:h-9 md:max-w-[260px]"
+            className="h-10 w-auto max-w-[min(60vw,280px)] object-contain object-center sm:h-11 md:h-12 md:max-w-[320px]"
           />
         </a>
 
