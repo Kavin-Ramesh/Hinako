@@ -38,14 +38,14 @@ export function Waitlist() {
             transition={{ duration: 1, ease, delay: 0.05 }}
             className="mx-auto w-full max-w-md lg:mx-0 lg:max-w-lg"
           >
-            <div className="overflow-hidden rounded-2xl border border-mist bg-ink shadow-[0_24px_60px_-24px_rgba(26,39,68,0.2)]">
+            <div className="overflow-hidden rounded-2xl border border-mist bg-[#f5f1e8] shadow-[0_24px_60px_-24px_rgba(26,39,68,0.2)]">
               <img
                 src={images.product}
-                alt="Hinako the handbag clip — secure your style. Promotional graphic with the clip on cream and Hinako wordmark."
+                alt="Hinako the handbag clip — secure your style. Promotional graphic with the clip and Hinako wordmark."
                 className="mx-auto max-h-[min(65vh,580px)] w-auto max-w-full object-contain"
                 fetchPriority="high"
-                width={819}
-                height={1024}
+                width={465}
+                height={819}
               />
             </div>
             <figcaption className="mt-4 text-center text-xs leading-relaxed text-ink-soft lg:text-left">
