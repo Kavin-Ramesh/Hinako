@@ -8,7 +8,7 @@
 export const images = {
   /** Hand-drawn “hinako” bubble wordmark (RGBA, transparent) */
   wordmark: "/images/wordmark.png",
-  /** First Hinako clip — vertical promo (wordmark + product) */
+  /** First Hinako clip — promo graphic (cream + product + black field) */
   product: "/images/product.jpg",
   hero: "/images/hero.jpg",
 
