@@ -41,7 +41,7 @@ export function Waitlist() {
             <div className="overflow-hidden rounded-2xl border border-mist bg-[#f2eae1] shadow-[0_24px_60px_-24px_rgba(26,39,68,0.2)]">
               <img
                 src={images.product}
-                alt="Hinako the handbag clip — secure your style. Landscape graphic with wordmark and clip on cream."
+                alt="Hinako the handbag clip — secure your style. Wordmark and translucent clip prototype on a warm beige background."
                 className="mx-auto h-auto w-full max-h-[min(42vh,380px)] object-contain object-center md:max-h-[min(46vh,420px)]"
                 fetchPriority="high"
                 width={1024}
