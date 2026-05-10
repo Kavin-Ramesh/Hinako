@@ -38,7 +38,7 @@ export function Waitlist() {
             transition={{ duration: 1, ease, delay: 0.05 }}
             className="mx-auto w-full max-w-2xl lg:mx-0 lg:max-w-none"
           >
-            <div className="overflow-hidden rounded-2xl border border-mist bg-[#f2e9e1] shadow-[0_24px_60px_-24px_rgba(26,39,68,0.2)]">
+            <div className="overflow-hidden rounded-2xl border border-mist bg-[#f2eae1] shadow-[0_24px_60px_-24px_rgba(26,39,68,0.2)]">
               <img
                 src={images.product}
                 alt="Hinako the handbag clip — secure your style. Landscape graphic with wordmark and clip on cream."
