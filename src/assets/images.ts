@@ -6,6 +6,8 @@
  */
 
 export const images = {
+  /** Real product photo (prototype in hand) */
+  product: "/images/product.png",
   hero: "/images/hero.jpg",
 
   // Carousel — clip on a different bag type per card
