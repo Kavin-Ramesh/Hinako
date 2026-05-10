@@ -6,7 +6,7 @@ Built with **Vite + React + TypeScript + Tailwind CSS v4**, with **Framer Motion
 
 **Current experience:** one full-viewport **waitlist** (email + join) and a single **philosophy** section below (`BrandStatement`). Everything that used to follow the shop flow (carousel, purchase, mission columns, etc.) has been removed.
 
-The Hinako wordmark is a **hand-drawn PNG** (`public/images/wordmark.png`), used in the nav and footer.
+The Hinako wordmark is **hand-drawn bubble lettering** in pastel blue (`public/images/wordmark.png`), used in the nav and footer.
 
 ## Quick start
 
@@ -29,7 +29,7 @@ hinako/
 ├─ public/
 │  ├─ favicon.svg
 │  ├─ images/wordmark.png   Hand-drawn bubble title (nav + footer)
-│  └─ images/               `product.png` — real prototype; see `assets/images.ts`
+│  └─ images/               `product.jpg` — first-clip promo art; see `assets/images.ts`
 ├─ src/
 │  ├─ App.tsx               Waitlist + philosophy + Lenis
 │  ├─ index.css             Tailwind v4 + design tokens

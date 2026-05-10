@@ -36,20 +36,20 @@ export function Waitlist() {
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease, delay: 0.05 }}
-            className="mx-auto w-full max-w-sm lg:mx-0 lg:max-w-none"
+            className="mx-auto w-full max-w-md lg:mx-0 lg:max-w-lg"
           >
-            <div className="overflow-hidden rounded-2xl border border-mist bg-gradient-to-b from-mist/50 to-fog p-6 shadow-[0_24px_60px_-24px_rgba(26,39,68,0.2)] backdrop-blur-sm sm:p-8">
+            <div className="overflow-hidden rounded-2xl border border-mist bg-[#f5f1e8] p-4 shadow-[0_24px_60px_-24px_rgba(26,39,68,0.2)] sm:p-5">
               <img
                 src={images.product}
-                alt="Hinako clip prototype: translucent body with a gripped strap pad, held between finger and thumb"
-                className="mx-auto max-h-[min(52vh,440px)] w-auto max-w-full object-contain"
+                alt="Hinako the handbag clip — secure your style. Translucent clip with grip detail on a cream background."
+                className="mx-auto max-h-[min(62vh,560px)] w-auto max-w-full object-contain"
                 fetchPriority="high"
-                width={800}
-                height={1000}
+                width={819}
+                height={1024}
               />
             </div>
             <figcaption className="mt-4 text-center text-xs leading-relaxed text-ink-soft lg:text-left">
-              The first Hinako clip — same grip, same idea, refined for production.
+              The first Hinako clip — the handbag clip, refined for production.
             </figcaption>
           </motion.figure>
 
