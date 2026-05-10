@@ -1,16 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  /* Cool blue palette — waitlist site */
-  --color-fog: #eef3f9;
-  --color-mist: #dbe4ef;
-  --color-sand: #c8d4e4;
-  --color-rose: #5b92d9;
-  --color-rose-deep: #3f74bb;
-  --color-peach: #a8c4ec;
-  --color-butter: #d4e3f7;
-  --color-ink: #1a2744;
-  --color-ink-soft: #5a6b85;
+  /* Light blue + beige — waitlist site */
+  --color-fog: #e4eefb;
+  --color-mist: #c8daf2;
+  --color-sand: #e9dfd2;
+  --color-cream: #f5eee4;
+  --color-rose: #5c9ae0;
+  --color-rose-deep: #3d7dce;
+  --color-peach: #a8c9f0;
+  --color-butter: #efe6d8;
+  --color-ink: #2f3d52;
+  --color-ink-soft: #5c6e80;
 
   --font-display: "Geist", "Inter", system-ui, sans-serif;
   --font-sans: "Geist", "Inter", system-ui, sans-serif;
@@ -54,7 +55,7 @@
 
   ::selection {
     background-color: var(--color-rose);
-    color: var(--color-fog);
+    color: #ffffff;
   }
 
   :focus-visible {
@@ -105,7 +106,7 @@
   gap: 0.5rem;
   border-radius: 6px;
   background-color: var(--color-rose);
-  color: var(--color-fog);
+  color: #ffffff;
   padding: 0.75rem 1.4rem;
   font-family: var(--font-sans);
   font-size: 0.9rem;
