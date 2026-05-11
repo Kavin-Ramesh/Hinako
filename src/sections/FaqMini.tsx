@@ -4,7 +4,7 @@ import { Reveal } from "../components/Reveal";
 const FAQ = [
   {
     q: "when does hinako launch?",
-    a: "[month] [year]. waitlist members get 24-hour early access and a small thank-you discount before public launch.",
+    a: "June 2026. waitlist members get 24-hour early access and a small thank-you discount before public launch.",
   },
   { q: "how much will it cost?", a: "$7 for one. $12 for two. shipping flat $4 in the US." },
   {

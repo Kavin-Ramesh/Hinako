@@ -26,12 +26,9 @@ export function Testimonials() {
   return (
     <section className="border-y border-[color:var(--hinako-line)] bg-[color:var(--hinako-bg)] px-6 py-16 md:px-12 md:py-20">
       <div className="mx-auto max-w-6xl">
-        <div className="mb-10 flex items-end justify-between md:mb-14">
+        <div className="mb-10 md:mb-14">
           <p className="uppercase-wide text-[color:var(--hinako-muted)]">
             early testers · verified
-          </p>
-          <p className="hidden text-sm text-[color:var(--hinako-muted)] md:block">
-            n = 12 · spring 2026
           </p>
         </div>
 
