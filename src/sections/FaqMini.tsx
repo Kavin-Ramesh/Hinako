@@ -6,7 +6,7 @@ const FAQ = [
     q: "when does hinako launch?",
     a: "[month] [year]. waitlist members get 24-hour early access and a small thank-you discount before public launch.",
   },
-  { q: "how much will it cost?", a: "$22 for one. $38 for two. shipping flat $4 in the US." },
+  { q: "how much will it cost?", a: "$7 for one. $12 for two. shipping flat $4 in the US." },
   {
     q: "what bags does it work on?",
     a: "any strap up to 1.5\" wide. totes, shoulder bags, crossbody, gym bags. the silicone collar grips without creasing.",

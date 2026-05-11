@@ -44,7 +44,7 @@ export function ProductCards() {
               href="#join"
               className="uppercase-wide rounded-full border border-[color:var(--hinako-text)] px-5 py-2 transition hover:bg-[color:var(--hinako-text)] hover:text-[color:var(--hinako-bg)]"
             >
-              join waitlist · $22.00
+              join waitlist · $7.00
             </a>
           </div>
         </div>

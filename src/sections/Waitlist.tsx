@@ -175,8 +175,17 @@ export function Waitlist() {
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+    const submittedEmail = email;
     setDone(true);
     setEmail("");
+    fetch(
+      "https://script.google.com/macros/s/AKfycbyD0FEk4oVZh3BrksppDhmg7fnwU9Fsn4oiLWkjpEcZ-5LYy9kO5zpP7d_XI_HCwtVU/exec",
+      {
+        method: "POST",
+        mode: "no-cors",
+        body: new URLSearchParams({ email: submittedEmail }),
+      },
+    ).catch(() => {});
   };
 
   const productCard = (
