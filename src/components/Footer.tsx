@@ -10,7 +10,7 @@ const COLUMNS: { title: string; links: { label: string; href: string; external?:
   {
     title: "social",
     links: [
-      { label: "instagram", href: "https://instagram.com/hinako", external: true },
+      { label: "instagram", href: "https://instagram.com/hinako.ucla_", external: true },
       { label: "tiktok", href: "https://tiktok.com/@hinako", external: true },
       { label: "pinterest", href: "https://pinterest.com/hinako", external: true },
     ],

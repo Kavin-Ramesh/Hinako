@@ -5,7 +5,7 @@ const LEFT = [
   { label: "philosophy", href: "#story" },
   { label: "waitlist", href: "#join" },
 ];
-const RIGHT = [{ label: "@hinako", href: "https://instagram.com/hinako" }];
+const RIGHT = [{ label: "@hinako.ucla_", href: "https://instagram.com/hinako.ucla_" }];
 
 /** Sticky nav — modeled after testsite `Header` */
 export function Nav() {
