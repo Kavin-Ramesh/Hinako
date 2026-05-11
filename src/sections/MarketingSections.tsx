@@ -75,25 +75,22 @@ export function ProductMoments() {
   );
 }
 
-/** Clear, smoke, amber lineup — slim banner */
+/** Big hinako wordmark — closing brand mark */
 export function VariantsLineup() {
   return (
     <section
-      aria-label="Color options"
-      className="border-t border-sand/40 bg-[#eee8df] py-12 md:py-16"
+      aria-label="Hinako"
+      className="border-t border-sand/40 bg-[#eee8df] py-16 md:py-24"
     >
-      <div className="mx-auto max-w-[1100px] px-4 md:px-8">
-        <div className={marketingHoverStrip}>
-          <img
-            src={images.variantsLineup}
-            alt="Hinako handbag clip in three finishes: clear, smoke, and amber"
-            width={1024}
-            height={238}
-            decoding="async"
-            loading="lazy"
-            className={stripImgClass}
-          />
-        </div>
+      <div className="mx-auto w-full max-w-[512px] px-6 md:px-12">
+        <img
+          src={images.wordmark}
+          alt="hinako"
+          decoding="async"
+          loading="lazy"
+          draggable={false}
+          className="block h-auto w-full select-none"
+        />
       </div>
     </section>
   );

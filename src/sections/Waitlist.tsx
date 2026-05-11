@@ -8,8 +8,8 @@ const ease = [0.22, 1, 0.36, 1] as const;
  * Product hero: idle turntable + float live in `index.css` (`.hero-product-*` keyframes).
  * Pointer tilt — desktop / fine pointer only. Tune spin amplitude/duration in CSS; tune tilt here:
  *
- * - maxRotateDeg — max tilt toward edges (degrees). ~4–8 feels luxury-subtle.
- * - hoverScale — 1 = none; ~1.02–1.04 for a slight lift.
+ * - maxRotateDeg — max tilt toward edges (degrees).
+ * - hoverScale — 1 = none; ~1.03–1.05 reads clearly with idle spin.
  * - hoverLiftPx — negative floats the card up a few pixels (adds on top of idle float).
  * - lerp — smoothing while hovering (0–1). Higher = snappier follow.
  * - transitionLerpOnLeave — smoothing after mouse leave (usually lower = slower settle).
@@ -17,12 +17,12 @@ const ease = [0.22, 1, 0.36, 1] as const;
  * - easeShadow() below — edit RGBA / blur / spread for rest vs active shadows.
  */
 const TILT = {
-  maxRotateDeg: 5.5,
-  hoverScale: 1.022,
-  hoverLiftPx: -6,
-  lerp: 0.14,
+  maxRotateDeg: 8.5,
+  hoverScale: 1.038,
+  hoverLiftPx: -10,
+  lerp: 0.16,
   transitionLerpOnLeave: 0.09,
-  perspectivePx: 1000,
+  perspectivePx: 920,
 } as const;
 
 /** shadowT: 0 = rest, 1 = full hover — blend for a soft premium shadow */
@@ -32,8 +32,8 @@ function easeShadow(shadowT: number) {
   const y = 24 + 12 * v;
   const spread = -24 + 4 * v;
   const alpha = 0.14 + 0.06 * v;
-  const accent = v > 0.04 ? `, 0 ${14 + 10 * v}px ${38 + 14 * v}px -12px rgba(92, 154, 224, ${0.08 + 0.08 * v})` : "";
-  return `0 ${y}px ${blur}px ${spread}px rgba(47, 61, 82, ${alpha})${accent}`;
+  const accent = v > 0.04 ? `, 0 ${14 + 10 * v}px ${38 + 14 * v}px -12px rgba(168, 184, 158, ${0.12 + 0.08 * v})` : "";
+  return `0 ${y}px ${blur}px ${spread}px rgba(28, 28, 26, ${alpha})${accent}`;
 }
 
 type TiltVals = { rx: number; ry: number; s: number; lz: number; shadowT: number };
@@ -48,6 +48,7 @@ export function Waitlist() {
   const targetRef = useRef<TiltVals>({ rx: 0, ry: 0, s: 1, lz: 0, shadowT: 0 });
   const hoveringRef = useRef(false);
   const rafRef = useRef<number>(0);
+  const runFrameRef = useRef<() => void>(() => {});
 
   useEffect(() => {
     const reduceMq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -92,16 +93,26 @@ export function Waitlist() {
       Math.abs(t.shadowT - c.shadowT) < eps;
 
     if (!settled) {
-      rafRef.current = requestAnimationFrame(runFrame);
+      rafRef.current = requestAnimationFrame(() => {
+        runFrameRef.current();
+      });
     } else {
       rafRef.current = 0;
     }
   }, [tiltEnabled]);
 
+  useLayoutEffect(() => {
+    runFrameRef.current = runFrame;
+  }, [runFrame]);
+
   const scheduleFrame = useCallback(() => {
     if (!tiltEnabled) return;
-    if (!rafRef.current) rafRef.current = requestAnimationFrame(runFrame);
-  }, [tiltEnabled, runFrame]);
+    if (!rafRef.current) {
+      rafRef.current = requestAnimationFrame(() => {
+        runFrameRef.current();
+      });
+    }
+  }, [tiltEnabled]);
 
   useEffect(() => {
     return () => {
@@ -176,16 +187,16 @@ export function Waitlist() {
       onMouseMove={tiltEnabled ? onMouseMove : undefined}
       onMouseLeave={tiltEnabled ? onMouseLeave : undefined}
       className={`overflow-hidden rounded-2xl border border-mist bg-cream transform-gpu will-change-transform [transform-style:preserve-3d] [backface-visibility:hidden] ${
-        tiltEnabled ? "shadow-none" : "shadow-[0_24px_60px_-24px_rgba(47,61,82,0.14)]"
+        tiltEnabled ? "shadow-none" : "shadow-[0_24px_60px_-24px_rgba(28,28,26,0.14)]"
       }`}
     >
       <img
         src={images.product}
-        alt="Hinako the handbag clip — secure your style. Translucent clip prototype on a warm beige background."
-        className="mx-auto h-auto w-full max-h-[min(42vh,380px)] object-contain object-center md:max-h-[min(46vh,420px)]"
+        alt="Hinako — the handbag clip, secure your style. Sky-blue wordmark and translucent clip on a warm beige background."
+        className="mx-auto h-auto w-full max-h-[min(48vh,420px)] object-contain object-center md:max-h-[min(52vh,480px)]"
         fetchPriority="high"
-        width={933}
-        height={1024}
+        width={1024}
+        height={570}
         draggable={false}
       />
     </div>
@@ -214,101 +225,94 @@ export function Waitlist() {
 
   return (
     <section
-      id="top"
-      aria-labelledby="waitlist-heading"
-      className="relative flex min-h-[calc(100svh-8rem)] w-full flex-col justify-center overflow-x-hidden overflow-y-visible bg-fog px-6 py-16 md:min-h-[calc(100svh-8.75rem)] md:px-10 md:py-24"
-    >
-      <div
-        className="pointer-events-none absolute inset-0 opacity-90"
-        style={{
-          background:
-            "radial-gradient(ellipse 80% 55% at 50% -10%, rgba(92,154,224,0.18) 0%, transparent 55%), radial-gradient(ellipse 55% 48% at 100% 100%, rgba(233,223,210,0.45) 0%, transparent 52%)",
-        }}
-        aria-hidden
-      />
+        id="join"
+        aria-labelledby="waitlist-heading"
+        className="relative overflow-x-hidden overflow-y-visible border-b border-[color:var(--hinako-line)] bg-fog px-6 py-16 md:px-10 md:py-24"
+      >
+        <div className="relative z-10 mx-auto w-full max-w-5xl">
+          <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
+            <motion.figure
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, ease, delay: 0.05 }}
+              className="mx-auto w-full max-w-2xl overflow-visible lg:mx-0 lg:max-w-none"
+            >
+              {heroProduct}
+              <figcaption className="mt-4 text-center text-xs leading-relaxed text-ink-soft lg:text-left">
+                The first Hinako clip — the handbag clip, refined for production.
+              </figcaption>
+            </motion.figure>
 
-      <div className="relative z-10 mx-auto w-full max-w-5xl">
-        <div className="grid items-center gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
-          <motion.figure
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease, delay: 0.05 }}
-            className="mx-auto w-full max-w-2xl overflow-visible lg:mx-0 lg:max-w-none"
-          >
-            {heroProduct}
-            <figcaption className="mt-4 text-center text-xs leading-relaxed text-ink-soft lg:text-left">
-              The first Hinako clip — the handbag clip, refined for production.
-            </figcaption>
-          </motion.figure>
+            <div className="text-center lg:text-left">
+              <motion.p
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease, delay: 0.15 }}
+                className="uppercase-wide mb-4 text-ink-soft"
+              >
+                early access
+              </motion.p>
+              <motion.h2
+                id="waitlist-heading"
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.9, ease, delay: 0.28 }}
+                className="serif-italic text-5xl font-medium leading-[0.95] tracking-tight text-ink sm:text-6xl md:text-7xl"
+              >
+                first in line.
+              </motion.h2>
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.85, ease, delay: 0.42 }}
+                className="mx-auto mt-6 max-w-md text-base text-ink-soft md:text-lg lg:mx-0"
+              >
+                Be the first to hear when Hinako opens. One good clip, made really well.
+              </motion.p>
 
-          <div className="text-center lg:text-left">
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease, delay: 0.15 }}
-              className="eyebrow mb-6"
-            >
-              early access
-            </motion.p>
-            <motion.h1
-              id="waitlist-heading"
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.9, ease, delay: 0.28 }}
-              className="font-display mx-auto max-w-[min(92vw,440px)] text-4xl font-medium leading-[1.02] tracking-[-0.04em] text-ink sm:text-5xl md:text-6xl lg:mx-0"
-            >
-              A bag that <em>stays.</em>
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.85, ease, delay: 0.42 }}
-              className="mx-auto mt-6 max-w-md text-base leading-relaxed text-ink-soft md:text-lg lg:mx-0"
-            >
-              One good clip, made really well. Join the list — we will let you know when Hinako opens.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.85, ease, delay: 0.52 }}
-              className="mt-10"
-            >
-              {done ? (
-                <p className="text-sm font-medium text-ink lg:text-left" role="status">
-                  You are on the list. Thank you.
-                </p>
-              ) : (
-                <form
-                  onSubmit={submit}
-                  className="mx-auto flex max-w-md flex-col gap-3 sm:flex-row sm:items-stretch lg:mx-0"
-                >
-                  <label htmlFor="waitlist-email" className="sr-only">
-                    Email address
-                  </label>
-                  <input
-                    id="waitlist-email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Email"
-                    className="min-h-12 flex-1 rounded-md border border-mist bg-cream/80 px-4 text-sm text-ink placeholder:text-ink-soft/70 backdrop-blur-sm transition-colors focus:border-rose-deep focus:outline-none"
-                  />
-                  <button
-                    type="submit"
-                    className="min-h-12 shrink-0 rounded-md bg-rose px-6 text-[0.7rem] font-medium uppercase tracking-[0.18em] text-white transition-colors hover:bg-rose-deep"
+              <motion.div
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.85, ease, delay: 0.52 }}
+                className="mt-10"
+              >
+                {done ? (
+                  <p className="text-sm font-medium text-ink lg:text-left" role="status">
+                    You are on the list. Thank you.
+                  </p>
+                ) : (
+                  <form
+                    onSubmit={submit}
+                    className="input-line mx-auto max-w-lg lg:mx-0"
+                    aria-label="Join the waitlist"
                   >
-                    Join
-                  </button>
-                </form>
-              )}
-            </motion.div>
+                    <label htmlFor="waitlist-email" className="sr-only">
+                      Email address
+                    </label>
+                    <input
+                      id="waitlist-email"
+                      name="email"
+                      type="email"
+                      autoComplete="email"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="your email"
+                      className="flex-1 bg-transparent py-3 text-base text-ink placeholder:text-ink-soft/80 focus:outline-none"
+                    />
+                    <button
+                      type="submit"
+                      className="group inline-flex items-center gap-2 py-3 pl-4 uppercase-wide text-ink transition-opacity hover:opacity-70"
+                    >
+                      <span>join</span>
+                      <span className="arrow">→</span>
+                    </button>
+                  </form>
+                )}
+              </motion.div>
+            </div>
           </div>
         </div>
-      </div>
     </section>
   );
 }

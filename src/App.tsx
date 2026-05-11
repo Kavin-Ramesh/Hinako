@@ -1,17 +1,18 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 
-import { UtilityBar } from "./components/UtilityBar";
+import { ScrollProgress } from "./components/ScrollProgress";
+import { AnnouncementMarquee } from "./components/AnnouncementMarquee";
 import { Nav } from "./components/Nav";
 import { Footer } from "./components/Footer";
 
 import { Waitlist } from "./sections/Waitlist";
-import {
-  BenefitsStrip,
-  ProductMoments,
-  VariantsLineup,
-} from "./sections/MarketingSections";
-import { BrandStatement } from "./sections/BrandStatement";
+import { Testimonials } from "./sections/Testimonials";
+import { ProductCards } from "./sections/ProductCards";
+import { Preview } from "./sections/Preview";
+import { HowItWorks } from "./sections/HowItWorks";
+import { FounderMini } from "./sections/FounderMini";
+import { FaqMini } from "./sections/FaqMini";
 
 export default function App() {
   useEffect(() => {
@@ -40,15 +41,18 @@ export default function App() {
 
   return (
     <div className="bg-fog text-ink">
-      <UtilityBar />
+      <ScrollProgress />
+      <AnnouncementMarquee />
       <Nav />
 
       <main>
         <Waitlist />
-        <BenefitsStrip />
-        <BrandStatement />
-        <ProductMoments />
-        <VariantsLineup />
+        <Testimonials />
+        <ProductCards />
+        <Preview />
+        <HowItWorks />
+        <FounderMini />
+        <FaqMini />
       </main>
 
       <Footer />

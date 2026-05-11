@@ -8,8 +8,8 @@
 export const images = {
   /** Hand-drawn “hinako” bubble wordmark (RGBA, transparent) */
   wordmark: "/images/wordmark.png",
-  /** First Hinako clip — landscape banner (wordmark + production-refined prototype photo). `?v=` busts cached JPEG after swaps. */
-  product: "/images/product.jpg?v=h1-20260511",
+  /** Waitlist hero — landscape promo (wordmark + tagline + clip on beige). `?v=` busts cache after swaps. */
+  product: "/images/product-hero-promo.png?v=h1-20260511a",
   /** Four-pillar value strip (SECURE, LIGHTWEIGHT, MINIMAL, MADE TO LAST) */
   benefitsStrip: "/images/benefits-strip.jpg",
   /** Clip in cream packaging with tissue */
@@ -18,6 +18,8 @@ export const images = {
   productEditorial: "/images/product-editorial.png",
   /** Clear, smoke, and amber variants lineup */
   variantsLineup: "/images/variants-lineup.jpg?v=2",
+  /** Anatomy of the clip — labeled diagram (cache-bust on swap) */
+  clipAnatomy: "/images/clip-anatomy.jpg?v=1",
   hero: "/images/hero.jpg",
 
   // Carousel — clip on a different bag type per card
