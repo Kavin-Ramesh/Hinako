@@ -39,8 +39,13 @@ function easeShadow(shadowT: number) {
 type TiltVals = { rx: number; ry: number; s: number; lz: number; shadowT: number };
 
 export function Waitlist() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
+  const [checkoutStatus, setCheckoutStatus] = useState<"success" | "canceled" | null>(null);
   const [idleMotionEnabled, setIdleMotionEnabled] = useState(false);
   const [tiltEnabled, setTiltEnabled] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -49,6 +54,21 @@ export function Waitlist() {
   const hoveringRef = useRef(false);
   const rafRef = useRef<number>(0);
   const runFrameRef = useRef<() => void>(() => {});
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    const status = params.get("checkout");
+    if (status === "success" || status === "canceled") {
+      setCheckoutStatus(status);
+      params.delete("checkout");
+      params.delete("session_id");
+      const remaining = params.toString();
+      const newUrl =
+        window.location.pathname + (remaining ? `?${remaining}` : "") + window.location.hash;
+      window.history.replaceState({}, "", newUrl);
+    }
+  }, []);
 
   useEffect(() => {
     const reduceMq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -172,18 +192,45 @@ export function Waitlist() {
     scheduleFrame();
   };
 
+  const startCheckout = async () => {
+    if (checkoutLoading) return;
+    setCheckoutLoading(true);
+    setCheckoutError(null);
+    try {
+      const res = await fetch("/api/create-checkout-session", { method: "POST" });
+      const data = (await res.json().catch(() => ({}))) as { url?: string; error?: string };
+      if (!res.ok || !data.url) {
+        throw new Error(data.error ?? "Could not start checkout. Please try again.");
+      }
+      window.location.assign(data.url);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : "Could not start checkout.";
+      setCheckoutError(message);
+      setCheckoutLoading(false);
+    }
+  };
+
   const submit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!firstName.trim() || !lastName.trim()) return;
     if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+    const submittedFirstName = firstName.trim();
+    const submittedLastName = lastName.trim();
     const submittedEmail = email;
     setDone(true);
+    setFirstName("");
+    setLastName("");
     setEmail("");
     fetch(
       "https://script.google.com/macros/s/AKfycbyD0FEk4oVZh3BrksppDhmg7fnwU9Fsn4oiLWkjpEcZ-5LYy9kO5zpP7d_XI_HCwtVU/exec",
       {
         method: "POST",
         mode: "no-cors",
-        body: new URLSearchParams({ email: submittedEmail }),
+        body: new URLSearchParams({
+          firstName: submittedFirstName,
+          lastName: submittedLastName,
+          email: submittedEmail,
+        }),
       },
     ).catch(() => {});
   };
@@ -292,31 +339,118 @@ export function Waitlist() {
                 ) : (
                   <form
                     onSubmit={submit}
-                    className="input-line mx-auto max-w-lg lg:mx-0"
+                    className="mx-auto max-w-lg space-y-5 lg:mx-0"
                     aria-label="Join the waitlist"
                   >
-                    <label htmlFor="waitlist-email" className="sr-only">
-                      Email address
-                    </label>
-                    <input
-                      id="waitlist-email"
-                      name="email"
-                      type="email"
-                      autoComplete="email"
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="your email"
-                      className="flex-1 bg-transparent py-3 text-base text-ink placeholder:text-ink-soft/80 focus:outline-none"
-                    />
-                    <button
-                      type="submit"
-                      className="group inline-flex items-center gap-2 py-3 pl-4 uppercase-wide text-ink transition-opacity hover:opacity-70"
-                    >
-                      <span>join</span>
-                      <span className="arrow">→</span>
-                    </button>
+                    <div className="grid gap-5 sm:grid-cols-2">
+                      <div className="input-line">
+                        <label htmlFor="waitlist-first-name" className="sr-only">
+                          First name
+                        </label>
+                        <input
+                          id="waitlist-first-name"
+                          name="firstName"
+                          type="text"
+                          autoComplete="given-name"
+                          required
+                          value={firstName}
+                          onChange={(e) => setFirstName(e.target.value)}
+                          placeholder="first name"
+                          className="flex-1 bg-transparent py-3 text-base text-ink placeholder:text-ink-soft/80 focus:outline-none"
+                        />
+                      </div>
+                      <div className="input-line">
+                        <label htmlFor="waitlist-last-name" className="sr-only">
+                          Last name
+                        </label>
+                        <input
+                          id="waitlist-last-name"
+                          name="lastName"
+                          type="text"
+                          autoComplete="family-name"
+                          required
+                          value={lastName}
+                          onChange={(e) => setLastName(e.target.value)}
+                          placeholder="last name"
+                          className="flex-1 bg-transparent py-3 text-base text-ink placeholder:text-ink-soft/80 focus:outline-none"
+                        />
+                      </div>
+                    </div>
+                    <div className="input-line">
+                      <label htmlFor="waitlist-email" className="sr-only">
+                        Email address
+                      </label>
+                      <input
+                        id="waitlist-email"
+                        name="email"
+                        type="email"
+                        autoComplete="email"
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="your email"
+                        className="flex-1 bg-transparent py-3 text-base text-ink placeholder:text-ink-soft/80 focus:outline-none"
+                      />
+                      <button
+                        type="submit"
+                        className="group inline-flex items-center gap-2 py-3 pl-4 uppercase-wide text-ink transition-opacity hover:opacity-70"
+                      >
+                        <span>join</span>
+                        <span className="arrow">→</span>
+                      </button>
+                    </div>
                   </form>
+                )}
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.85, ease, delay: 0.62 }}
+                className="mt-8"
+              >
+                {checkoutStatus === "success" ? (
+                  <p
+                    className="text-sm font-medium text-ink lg:text-left"
+                    role="status"
+                  >
+                    Thank you — your order is in. We will email you a confirmation shortly.
+                  </p>
+                ) : (
+                  <>
+                    <div className="flex flex-col items-center gap-3 lg:items-start">
+                      <button
+                        type="button"
+                        onClick={startCheckout}
+                        disabled={checkoutLoading}
+                        className="group inline-flex items-center gap-3 rounded-full bg-ink px-7 py-3.5 uppercase-wide text-cream transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
+                      >
+                        <span>
+                          {checkoutLoading ? "redirecting…" : "pre-order — $7"}
+                        </span>
+                        <span className="arrow">→</span>
+                      </button>
+                      <p className="text-xs text-ink-soft">
+                        Secure checkout via Stripe. Ships at launch.
+                      </p>
+                    </div>
+                    {checkoutStatus === "canceled" && (
+                      <p
+                        className="mt-3 text-sm text-ink-soft lg:text-left"
+                        role="status"
+                      >
+                        Checkout canceled — your card was not charged.
+                      </p>
+                    )}
+                    {checkoutError && (
+                      <p
+                        className="mt-3 text-sm text-red-500 lg:text-left"
+                        role="alert"
+                      >
+                        {checkoutError}
+                      </p>
+                    )}
+                  </>
                 )}
               </motion.div>
             </div>
