@@ -45,7 +45,7 @@ export function Footer() {
             </a>
           </div>
         </div>
-        <div className="mx-auto mt-12 flex max-w-6xl items-center justify-between text-xs text-[color:var(--hinako-muted)]">
+        <div className="mx-auto mt-12 flex max-w-6xl flex-col items-center gap-3 text-xs text-[color:var(--hinako-muted)] sm:flex-row sm:justify-between sm:gap-0">
           <p>© hinako 2026 · made to stay.</p>
           <button
             type="button"
