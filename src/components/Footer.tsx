@@ -1,8 +1,7 @@
 const COLUMNS: { title: string; links: { label: string; href: string; external?: boolean }[] }[] = [
   {
-    title: "navigate",
+    title: "site",
     links: [
-      { label: "about", href: "#story" },
       { label: "waitlist", href: "#join" },
       { label: "faq", href: "#faq" },
     ],
@@ -12,14 +11,6 @@ const COLUMNS: { title: string; links: { label: string; href: string; external?:
     links: [
       { label: "instagram", href: "https://instagram.com/hinako.ucla_", external: true },
       { label: "tiktok", href: "https://tiktok.com/@hinako", external: true },
-      { label: "pinterest", href: "https://pinterest.com/hinako", external: true },
-    ],
-  },
-  {
-    title: "official",
-    links: [
-      { label: "privacy", href: "#" },
-      { label: "terms", href: "#" },
     ],
   },
 ];
@@ -28,7 +19,7 @@ export function Footer() {
   return (
     <footer className="mt-12 border-t border-[color:var(--hinako-line)]">
       <div className="border-t border-[color:var(--hinako-line)] px-6 py-12 md:px-12">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-10 md:grid-cols-4">
+        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-10 md:grid-cols-3">
           {COLUMNS.map((col) => (
             <div key={col.title}>
               <h4 className="uppercase-wide mb-4">{col.title}</h4>

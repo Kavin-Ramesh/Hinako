@@ -1,17 +1,10 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 
-import { ScrollProgress } from "./components/ScrollProgress";
-import { AnnouncementMarquee } from "./components/AnnouncementMarquee";
 import { Nav } from "./components/Nav";
 import { Footer } from "./components/Footer";
 
 import { Waitlist } from "./sections/Waitlist";
-import { Testimonials } from "./sections/Testimonials";
-import { ProductCards } from "./sections/ProductCards";
-import { Preview } from "./sections/Preview";
-import { HowItWorks } from "./sections/HowItWorks";
-import { FounderMini } from "./sections/FounderMini";
 import { FaqMini } from "./sections/FaqMini";
 
 export default function App() {
@@ -41,17 +34,10 @@ export default function App() {
 
   return (
     <div className="bg-fog text-ink">
-      <ScrollProgress />
-      <AnnouncementMarquee />
       <Nav />
 
-      <main>
+      <main id="top">
         <Waitlist />
-        <Testimonials />
-        <ProductCards />
-        <Preview />
-        <HowItWorks />
-        <FounderMini />
         <FaqMini />
       </main>
 

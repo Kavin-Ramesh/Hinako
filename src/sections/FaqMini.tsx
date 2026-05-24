@@ -11,14 +11,6 @@ const FAQ = [
     q: "what bags does it work on?",
     a: "any strap up to 1.5\" wide. totes, shoulder bags, crossbody, gym bags. the silicone collar grips without creasing.",
   },
-  {
-    q: "will i be charged anything to join?",
-    a: "no. the waitlist is free. you'll get an email when we launch — that's it. no spam.",
-  },
-  {
-    q: "how do i secure my shade?",
-    a: "join the waitlist. you'll be first in line, and the popular shades (sumi, sakura) tend to go first.",
-  },
 ];
 
 function Row({

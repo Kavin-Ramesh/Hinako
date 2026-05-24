@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { images } from "../assets/images";
 
 const LEFT = [
-  { label: "philosophy", href: "#story" },
   { label: "waitlist", href: "#join" },
+  { label: "faq", href: "#faq" },
 ];
 const RIGHT = [{ label: "@hinako.ucla_", href: "https://instagram.com/hinako.ucla_" }];
 
@@ -63,16 +63,6 @@ export function Nav() {
           />
         </a>
         <ul className="flex items-center justify-end gap-5 sm:gap-7">
-          <li className="hidden items-center gap-2 text-[color:var(--hinako-muted)] sm:flex">
-            <span
-              className="relative inline-flex h-1.5 w-1.5 rounded-full"
-              style={{ color: "var(--hinako-matcha)" }}
-            >
-              <span className="absolute inset-0 rounded-full bg-current pulse-dot" />
-              <span className="absolute inset-0 rounded-full bg-current" />
-            </span>
-            <span className="uppercase-wide">waitlist open</span>
-          </li>
           {RIGHT.map((l) => (
             <li key={l.label}>
               <a
