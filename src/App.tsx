@@ -5,6 +5,7 @@ import { Nav } from "./components/Nav";
 import { Footer } from "./components/Footer";
 
 import { Waitlist } from "./sections/Waitlist";
+import { Features } from "./sections/Features";
 import { FaqMini } from "./sections/FaqMini";
 
 export default function App() {
@@ -38,6 +39,7 @@ export default function App() {
 
       <main id="top">
         <Waitlist />
+        <Features />
         <FaqMini />
       </main>
 
