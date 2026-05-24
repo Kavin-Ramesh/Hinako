@@ -426,7 +426,7 @@ export function Waitlist() {
                         className="group inline-flex items-center gap-3 rounded-full bg-ink px-7 py-3.5 uppercase-wide text-cream transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
                       >
                         <span>
-                          {checkoutLoading ? "redirecting…" : "pre-order — $7"}
+                          {checkoutLoading ? "redirecting…" : "order — $7"}
                         </span>
                         <span className="arrow">→</span>
                       </button>

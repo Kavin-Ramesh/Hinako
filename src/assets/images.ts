@@ -7,7 +7,7 @@
 
 export const images = {
   /** Hand-drawn “hinako” bubble wordmark (RGBA, transparent) */
-  wordmark: "/images/wordmark.png",
+  wordmark: "/images/title-card.png",
   /** Waitlist hero — landscape promo (wordmark + tagline + clip on beige). `?v=` busts cache after swaps. */
   product: "/images/product-hero-promo.png?v=h1-20260511a",
   /** Four-pillar value strip (SECURE, LIGHTWEIGHT, MINIMAL, MADE TO LAST) */
